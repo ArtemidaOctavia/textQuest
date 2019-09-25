@@ -2,6 +2,7 @@ const description = document.querySelector('.description');
 const image = document.querySelector('.image');
 const options = document.querySelector('.options');
 const inventory = document.querySelector('.inventory');
+var inventoryArray = [];
 const obj = {
         // scene name = id //
         bedScene: {
@@ -9,6 +10,15 @@ const obj = {
             image: "pictures/bed.jpg",
             actions: {
                 'Встать': 'roomScene',
+                'Пошариться': 'itemScene'
+            }
+        },
+        itemScene: {
+            items: ['Коронный', 'Похоронный'],
+            description: 'Две штуки',
+            image: "pictures/duals.jpg",
+            actions: {
+                'Назад': 'bedScene'
             }
         },
         roomScene: {
@@ -29,11 +39,22 @@ const obj = {
             }
         },
         batyaScene: {
-            description: 'Не, этого молодого человека лучше не трогать',
+            description: 'Не, туда только если с дуалами',
             image: 'pictures/batya.jpg',
             actions: {
-                'СЪЕБАТЬСЯ В УЖАСЕ' : 'hallScene',
+                'Стремительно ретироваться' : 'hallScene',
+            },
+            requiredItems: ['Похоронный', 'Коронный'],
+            specialActions: {
+                'Войти' : 'youDiedScene'
             }
+        },
+        youDiedScene: {
+            description: 'АГРХРАХРАХРАХХХХХГГХХ',
+            image: 'pictures/youdied.jpg',
+            actions: {
+                'Заново': 'bedScene'
+            },
         },
         corridorScene: {
             description: 'Ох и наебался я, чтобы это говнище заработало',
@@ -78,10 +99,39 @@ const renderOption = function (text, way) {
     options.appendChild(option);
 };
 
+const renderSpecialOption = function (text, way, scene) {
+    var hasNecessaryItems = true;
+    const requiredItems = scene.requiredItems;
+    requiredItems.forEach(function (item) {
+        if (inventoryArray.indexOf(item) === -1) {
+            hasNecessaryItems = false
+        }
+    });
+    if (hasNecessaryItems === false) {
+        return
+    }
+    renderOption(text, way)
+};
+
 const killChildren = function () {
     while (options.firstChild) {
         options.removeChild(options.firstChild);
     }
+};
+
+const giveItems = function (scene) {
+    const items = scene.items;
+    inventoryArray.forEach(function (element){
+        if (items.find(element) !== undefined) {
+            return;
+        }
+    });
+    items.forEach(function (item) {
+        inventoryArray.push(item);
+        const itemElement = document.createElement("li");
+        itemElement.textContent = item;
+        inventory.appendChild(itemElement);
+    })
 };
 
 const renderScene = function (id){
@@ -90,7 +140,13 @@ const renderScene = function (id){
     image.src = scene.image;
     killChildren();
     for (var option in scene.actions) {
-            renderOption(option, scene.actions[option]);
+        renderOption(option, scene.actions[option]);
+    }
+    for (var option in scene.specialActions) {
+        renderSpecialOption(option, scene.specialActions[option], scene);
+    }
+    if (scene.items) {
+        giveItems(scene)
     }
 };
 
