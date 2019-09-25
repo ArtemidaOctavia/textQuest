@@ -1,0 +1,87 @@
+.game_holder {
+    height: 800px;
+    width: 1220px;
+    margin: 5px;
+}
+
+.left_side_holder {
+    position: absolute;
+    display: inline-block;
+
+    height: 99%;
+    width: 46%;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.right_side_holder {
+    left: 47%;
+    position: absolute;
+    display: inline-block;
+
+    height: 99%;
+    width: 51%;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.description_holder {
+    height: 58%;
+    width: 95%;
+    display: inline-block;
+    border: 1px solid black;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.description {
+    padding: 10px;
+}
+
+.options_holder {
+    height: 38%;
+    width: 95%;
+    display: inline-block;
+    border: 1px solid black;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.illustration_holder {
+    height: 69%;
+    width: 95%;
+    display: inline-block;
+    border: 1px solid black;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+
+.inventory_holder {
+    height: 26%;
+    width: 95%;
+    display: inline-block;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border: 1px solid black;
+}
+
+.options {
+
+}
+
+.option:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.image {
+    height: 100%;
+    width: 100%;
+}
