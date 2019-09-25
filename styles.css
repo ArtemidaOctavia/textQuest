@@ -1,3 +1,7 @@
+html {
+    font-family: "Courier New";
+}
+
 .game_holder {
     height: 800px;
     width: 1220px;
@@ -76,9 +80,19 @@
 
 }
 
+.option {
+    background-color: lightgray;
+    display: inline-block;
+    float: left;
+    clear: both;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
 .option:hover {
     text-decoration: underline;
     cursor: pointer;
+    color: gray;
 }
 
 .image {
