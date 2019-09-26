@@ -10,11 +10,14 @@ const obj = {
             image: "pictures/bed.jpg",
             actions: {
                 'Встать': 'roomScene',
-                'Пошариться': 'itemScene'
+                'Пошариться': 'dualsScene'
             }
         },
-        itemScene: {
-            items: ['Коронный', 'Похоронный'],
+        dualsScene: {
+            items: {
+                'Коронный' : 'crown',
+                'Похоронный' : 'funeral'
+            },
             description: 'Две штуки',
             image: "pictures/duals.jpg",
             actions: {
@@ -39,7 +42,7 @@ const obj = {
             }
         },
         batyaScene: {
-            description: 'Не, туда только если с дуалами',
+            description: 'Туда только если с дуалами',
             image: 'pictures/batya.jpg',
             actions: {
                 'Стремительно ретироваться' : 'hallScene',
@@ -55,6 +58,10 @@ const obj = {
             actions: {
                 'Заново': 'bedScene'
             },
+            itemsLoss : {
+                'Коронный' : 'crown',
+                'Похоронный' : 'funeral'
+            }
         },
         corridorScene: {
             description: 'Ох и наебался я, чтобы это говнище заработало',
@@ -119,19 +126,27 @@ const killChildren = function () {
     }
 };
 
-const giveItems = function (scene) {
-    const items = scene.items;
+const giveItems = function (itemName, id) {
+    var haveItem = false;
     inventoryArray.forEach(function (element){
-        if (items.find(element) !== undefined) {
-            return;
+        if (itemName === element) {
+            haveItem = true;
         }
     });
-    items.forEach(function (item) {
-        inventoryArray.push(item);
-        const itemElement = document.createElement("li");
-        itemElement.textContent = item;
-        inventory.appendChild(itemElement);
-    })
+    if (haveItem === true) {
+        return;
+    }
+    const item = document.createElement('li');
+    item.textContent = itemName;
+    item.id = id;
+    inventory.appendChild(item);
+    inventoryArray.push(itemName);
+};
+
+const takeAwayItems = function (itemName, id) {
+    var itemIndex = inventoryArray.indexOf(itemName);
+    inventoryArray.splice(itemIndex, 1);
+    document.getElementById(id).remove();
 };
 
 const renderScene = function (id){
@@ -145,8 +160,11 @@ const renderScene = function (id){
     for (var option in scene.specialActions) {
         renderSpecialOption(option, scene.specialActions[option], scene);
     }
-    if (scene.items) {
-        giveItems(scene)
+    for (var item in scene.items) {
+        giveItems(item, scene.items[item])
+    }
+    for (var item in scene.itemsLoss) {
+        takeAwayItems(item, scene.itemsLoss[item])
     }
 };
 
