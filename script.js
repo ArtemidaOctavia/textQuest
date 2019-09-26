@@ -2,6 +2,7 @@ const description = document.querySelector('.description');
 const image = document.querySelector('.image');
 const options = document.querySelector('.options');
 const inventory = document.querySelector('.inventory');
+const illustrationHolder = document.querySelector('.illustration_holder')
 var inventoryArray = [];
 const obj = {
         // scene name = id //
@@ -120,10 +121,18 @@ const renderSpecialOption = function (text, way, scene) {
     renderOption(text, way)
 };
 
-const killChildren = function () {
-    while (options.firstChild) {
-        options.removeChild(options.firstChild);
+const killChildren = function (parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
     }
+};
+
+const renderPicture = function (scene) {
+    killChildren(illustrationHolder);
+    var image = document.createElement('img');
+    image.classList.add('image');
+    image.src = scene.image;
+    illustrationHolder.appendChild(image);
 };
 
 const giveItems = function (itemName, id) {
@@ -152,8 +161,8 @@ const takeAwayItems = function (itemName, id) {
 const renderScene = function (id){
     const scene = obj[id];
     description.textContent = scene.description;
-    image.src = scene.image;
-    killChildren();
+    renderPicture(scene);
+    killChildren(options);
     for (var option in scene.actions) {
         renderOption(option, scene.actions[option]);
     }
