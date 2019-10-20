@@ -2,6 +2,12 @@ const description = document.querySelector('.description');
 const options = document.querySelector('.options');
 const inventory = document.querySelector('.inventory');
 const picture = document.querySelector('.illustration_holder');
+const playerStatus = {
+    inventory: [],
+    effects: [],
+    location: 'bedScene'
+};
+
 const items = {
     royalSword : {
         name: 'Коронный',
@@ -13,14 +19,41 @@ const items = {
     }
 };
 
-const effects = {
-    mentalDisorder: {
-        name: 'Расстройство',
-        id: 'mentalDisorder',
-        influence: 'vololo'
-    }
+const conditions = {
+
 };
 
+const effects = {
+    getItems: (items) => {
+        items.forEach(function (item) {
+            var haveItem = false;
+            playerStatus['inventory'].forEach(function (element) {
+                if (item.name === element) {
+                    haveItem = true;
+                }
+            });
+            if (haveItem === true) {
+                return;
+            }
+            const itemElement = document.createElement('li');
+            itemElement.textContent = item.name;
+            itemElement.id = item.id;
+            inventory.appendChild(itemElement);
+            playerStatus['inventory'].push(item.name);
+        })
+    },
+    takeAwayItems: (items) => {
+        items.forEach(function (item) {
+        var itemIndex = playerStatus['inventory'].indexOf(item.name);
+        playerStatus['inventory'].splice(itemIndex, 1);
+        document.getElementById(item.id).remove();
+        })
+    },
+    moveTo: (id) => {
+        renderScene(id);
+    }
+
+};
 const scenes = {
     // scene name = id //
     bedScene: {
@@ -29,173 +62,172 @@ const scenes = {
         actions: {
             standUp: {
                 actionDescription: "Встать",
-                way: "roomScene",
+                effects: [
+                    {type: effects.moveTo, payload: 'roomScene'}
+                ]
             },
             lookAround: {
                 actionDescription: "Пошариться",
-                way: "dualsScene",
-                effects: {
-                    acquireItems: [items.royalSword, items.funeralSword],
-                    moveTo: 'dualsScene'
+                effects: [
+                    {type: effects.getItems, payload: [items.royalSword, items.funeralSword]},
+                    {type: effects.moveTo, payload: 'dualsScene'}
+                ]
+            }
+        }
+    },
+        dualsScene: {
+            description: 'Две штуки',
+            image: "pictures/duals.jpg",
+            actions: {
+                back: {
+                    actionDescription: "Назад",
+                    effects: [
+                        {type: effects.moveTo, payload: 'bedScene'}
+                    ]
                 }
-            }
-        }
-    },
-    dualsScene: {
-        description: 'Две штуки',
-        image: "pictures/duals.jpg",
-        actions: {
-            back: {
-                actionDescription: "Назад",
-                way: "bedScene",
-            }
-        }
-    },
-    roomScene: {
-        description: 'Или не прогуляться?',
-        image: 'pictures/room.jpg',
-        actions: {
-            lieDown: {
-                actionDescription: "Лечь обратно",
-                way: "bedScene"
-            },
-            goOutside: {
-                actionDescription: "Выйти из комнаты",
-                way: "hallScene"
-            }
-        }
-    },
-    hallScene: {
-        description: 'Темновато, но я в лом свет включать, чтобы фоткать',
-        image: 'pictures/hall.jpg',
-        actions: {
-            back: {
-                actionDescription: "Назад",
-                way: "roomScene"
-            },
-            left: {
-                actionDescription: "В комнату слева",
-                way: "batyaScene"
-            },
-            right: {
-                actionDescription: "В комнату справа",
-                way: "corridorScene"
-            }
-        }
-    },
-    batyaScene: {
-        description: 'Туда только если с дуалами',
-        image: 'pictures/batya.jpg',
-        actions: {
-            back: {
-                actionDescription: "Стремительно ретироваться",
-                way: 'hallScene'
-            },
-            enter: {
-                actionDescription: "Войти",
-                way: "youDiedScene",
-                requiredItems: ['Похоронный', 'Коронный'],
-                lossItems: {
-                    'Коронный': 'crown',
-                    'Похоронный': 'funeral'
-                },
-            }
-        }
-    },
-    youDiedScene: {
-        description: 'АГРХРАХРАХРАХХХХХГГХХ',
-        image: 'pictures/youdied.jpg',
-        actions: {
-            again: {
-                actionDescription: 'Заново',
-                way: 'bedScene',
             }
         },
-    },
-    corridorScene: {
-        description: 'Ох и наебался я, чтобы это всё заработало',
-        image: 'pictures/corridor.jpg',
-        actions: {
-            back : {
-                actionDescription: 'Назад',
-                way: 'hallScene'
-            },
-            toilet : {
-                actionDescription: 'В туалет',
-                way: 'morrowindScene'
-            },
-            kitchen : {
-                actionDescription: 'На кухню',
-                way: 'kitchenScene'
+        roomScene: {
+            description: 'Или не прогуляться?',
+            image: 'pictures/room.jpg',
+            actions: {
+                lieDown: {
+                    actionDescription: "Лечь обратно",
+                    effects: [
+                        {type: effects.moveTo, payload: 'bedScene'}
+                    ]
+                },
+                goOutside: {
+                    actionDescription: "Выйти из комнаты",
+                    effects: [
+                        {type: effects.moveTo, payload: 'hallScene'}
+                    ]
+                }
             }
         },
-    },
-    morrowindScene: {
-        description: 'Не, сюда, наверное, не надо',
-        image: 'pictures/morrowind.jpg',
-        actions: {
-            back: {
-                actionDescription: 'Назад',
-                way: 'corridorScene'
-            }
-        }
-    },
-    kitchenScene: {
-        description: 'О боже, да тут же кошечка!',
-        image: 'pictures/kitchen.jpg',
-        actions: {
-            back: {
-                actionDescription: 'Назад',
-                way: 'corridorScene'
-            },
-            pet : {
-                actionDescription: 'Приласкать :3',
-                way: 'pettingScene'
-            }
-        }
-    },
-    pettingScene: {
-        description: 'Кошечка в замешательстве, пора ливать писать код',
-        image: 'pictures/pet_catze.jpg',
-        actions: {
-            getCuted: {
-                actionDescription: 'Оуу :3',
-                way: 'kitchenScene'
-            }
-        }
-    },
-    testScene: {
-        description: 'test',
-        image: 'pictures/pet_catze.jpg',
-        actions: {
-            doThing: {
-                actionDescription: 'Углубиться',
-                way: 'pettingScene',
-                requiredItems: ['Разум'],
-                lossItems: {
-                    'Разум' : 'mind'
+        hallScene: {
+            description: 'Темновато, но я в лом свет включать, чтобы фоткать',
+            image: 'pictures/hall.jpg',
+            actions: {
+                back: {
+                    actionDescription: "Назад",
+                    effects: [
+                        {type: effects.moveTo, payload: 'roomScene'}
+                    ]
                 },
-                receiveItems: {
-                    'Расстройство' : 'disorder'
+                left: {
+                    actionDescription: "В комнату слева",
+                    effects: [
+                        {type: effects.moveTo, payload: 'batyaScene'}
+                    ]
+                },
+                right: {
+                    actionDescription: "В комнату справа",
+                    effects: [
+                        {type: effects.moveTo, payload: 'corridorScene'}
+                    ]
                 }
-
+            }
+        },
+        batyaScene: {
+            description: 'Туда только если с дуалами',
+            image: 'pictures/batya.jpg',
+            actions: {
+                back: {
+                    actionDescription: "Стремительно ретироваться",
+                    effects: [
+                        {type: effects.moveTo, payload: 'hallScene'}
+                    ]
+                },
+                enter: {
+                    actionDescription: "Войти",
+                    requiredItems: ['Похоронный', 'Коронный'],
+                    effects: [
+                        {type: effects.moveTo, payload: 'youDiedScene'},
+                        {type: effects.takeAwayItems, payload: [items.royalSword, items.funeralSword]}
+                    ]
+                }
+            }
+        },
+        youDiedScene: {
+            description: 'АГРХРАХРАХРАХХХХХГГХХ',
+            image: 'pictures/youdied.jpg',
+            actions: {
+                again: {
+                    actionDescription: 'Заново',
+                    effects: [
+                        {type: effects.moveTo, payload: 'bedScene'}
+                    ]
+                }
             },
-            doAnotherThing: {
-                actionDescription: 'Преисполниться',
-                way: 'testScene',
-                receiveItems: {
-                    'Разум' : 'mind'
+        },
+        corridorScene: {
+            description: 'Ох и наебался я, чтобы это всё заработало',
+            image: 'pictures/corridor.jpg',
+            actions: {
+                back: {
+                    actionDescription: 'Назад',
+                    effects: [
+                        {type: effects.moveTo, payload: 'hallScene'}
+                    ]
+                },
+                toilet: {
+                    actionDescription: 'В туалет',
+                    effects: [
+                        {type: effects.moveTo, payload: 'morrowindScene'}
+                    ]
+                },
+                kitchen: {
+                    actionDescription: 'На кухню',
+                    effects: [
+                        {type: effects.moveTo, payload: 'kitchenScene'}
+                    ]
+                }
+            },
+        },
+        morrowindScene: {
+            description: 'Не, сюда, наверное, не надо',
+            image: 'pictures/morrowind.jpg',
+            actions: {
+                back: {
+                    actionDescription: 'Назад',
+                    effects: [
+                        {type: effects.moveTo, payload: 'corridorScene'}
+                    ]
+                }
+            }
+        },
+        kitchenScene: {
+            description: 'О боже, да тут же кошечка!',
+            image: 'pictures/kitchen.jpg',
+            actions: {
+                back: {
+                    actionDescription: 'Назад',
+                    effects: [
+                        {type: effects.moveTo, payload: 'corridorScene'}
+                    ]
+                },
+                pet: {
+                    actionDescription: 'Приласкать :3',
+                    effects: [
+                        {type: effects.moveTo, payload: 'pettingScene'}
+                    ]
+                }
+            }
+        },
+        pettingScene: {
+            description: 'Кошечка в замешательстве, пора ливать писать код',
+            image: 'pictures/pet_catze.jpg',
+            actions: {
+                getCuted: {
+                    actionDescription: 'Оуу :3',
+                    effects: [
+                        {type: effects.moveTo, payload: 'kitchenScene'}
+                    ]
                 }
             }
         }
-    }
-
-};
-const playerStatus = {
-    inventory: [],
-    effects: [],
-    location: 'bedScene'
-};
+    };
 
 const renderOption = function (action) {
     if (action.requiredItems) {
@@ -214,13 +246,9 @@ const renderOption = function (action) {
     option.textContent = action.actionDescription;
     option.classList.add('option');
     option.addEventListener('click', function(){
-        for (item in action.receiveItems) {
-            giveItems(item, action.receiveItems[item]);
-        }
-        for (item in action.lossItems) {
-            takeAwayItems(item, action.lossItems[item]);
-        }
-        renderScene(action.way);
+        action.effects.forEach(function (effect) {
+            effect.type(effect.payload)
+        })
     });
     options.appendChild(option);
 };
@@ -237,29 +265,6 @@ const renderPicture = function (scene) {
     image.classList.add('image');
     image.src = scene.image;
     picture.appendChild(image);
-};
-
-const giveItems = function (itemName, id) {
-    var haveItem = false;
-    playerStatus['inventory'].forEach(function (element){
-        if (itemName === element) {
-            haveItem = true;
-        }
-    });
-    if (haveItem === true) {
-        return;
-    }
-    const item = document.createElement('li');
-    item.textContent = itemName;
-    item.id = id;
-    inventory.appendChild(item);
-    playerStatus['inventory'].push(itemName);
-};
-
-const takeAwayItems = function (itemName, id) {
-    var itemIndex = playerStatus['inventory'].indexOf(itemName);
-    playerStatus['inventory'].splice(itemIndex, 1);
-    document.getElementById(id).remove();
 };
 
 const renderScene = function (id){
