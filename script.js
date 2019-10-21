@@ -23,28 +23,56 @@ const conditions = {
 
 };
 
+const getDomElement = function (tag = 'div', text, id, src) {
+    const element = document.createElement(tag);
+    if (text) {element.textContent = text};
+    if (id) {element.id = id};
+    if (src) {element.src = src};
+    return element;
+};
+
 const effects = {
     getItems: (items) => {
         items.forEach(function (item) {
-            var haveItem = false;
-            playerStatus['inventory'].forEach(function (element) {
-                if (item.name === element) {
-                    haveItem = true;
-                }
+            const haveItem = playerStatus['inventory'].some(function (element) {
+                return item.name === element;
             });
-            if (haveItem === true) {
+            if (haveItem) {
                 return;
             }
-            const itemElement = document.createElement('li');
-            itemElement.textContent = item.name;
-            itemElement.id = item.id;
-            inventory.appendChild(itemElement);
+
+            /*createElement = ({ tag = 'div', ...props }) => { // default value
+                const elem = document.createElement(tag); // tag || 'div'
+
+                for (let [key, value] of Object.entries(props)) {
+                    elem[key] = value;
+                }
+
+                elem.textContent = text;
+
+                // ......
+            };*/
+
+            // createElement({ id: 'some id', text: 'textContent'});
+            inventory.appendChild(getDomElement('li', item.name, item.id));
             playerStatus['inventory'].push(item.name);
         })
     },
     takeAwayItems: (items) => {
-        items.forEach(function (item) {
+        items.forEach(function (item) { // { name, id }
         var itemIndex = playerStatus['inventory'].indexOf(item.name);
+
+        /*const oldObject = { a: 'a' };
+
+        const newObject = {
+            ...oldObject,
+            b: 'b',
+        };*/
+
+        // rewrite using filter;
+
+
+
         playerStatus['inventory'].splice(itemIndex, 1);
         document.getElementById(item.id).remove();
         })
@@ -231,19 +259,15 @@ const scenes = {
 
 const renderOption = function (action) {
     if (action.requiredItems) {
-        var hasNecessaryItems = true;
         const requiredItems = action.requiredItems;
-        requiredItems.forEach(function (item) {
-            if (playerStatus['inventory'].indexOf(item) === -1) {
-                hasNecessaryItems = false
-            }
+        const hasNecessaryItems = requiredItems.every(function (item) {
+            return playerStatus['inventory'].indexOf(item) === -1;
         });
-        if (!hasNecessaryItems) {
+        if (hasNecessaryItems) {
             return
         }
     }
-    const option = document.createElement('li');
-    option.textContent = action.actionDescription;
+    const option = getDomElement('li', action.actionDescription);
     option.classList.add('option');
     option.addEventListener('click', function(){
         action.effects.forEach(function (effect) {
@@ -261,9 +285,8 @@ const killChildren = function (parent) {
 
 const renderPicture = function (scene) {
     killChildren(picture);
-    var image = document.createElement('img');
+    const image = getDomElement('img', '', '', scene.image);
     image.classList.add('image');
-    image.src = scene.image;
     picture.appendChild(image);
 };
 
@@ -272,7 +295,7 @@ const renderScene = function (id){
     description.textContent = scene.description;
     renderPicture(scene);
     killChildren(options);
-    for (var option in scene.actions) {
+    for (const option in scene.actions) {
         renderOption(scene.actions[option]);
     }
 };
