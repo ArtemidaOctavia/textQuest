@@ -2,13 +2,111 @@ html {
     font-family: "Courier New";
 }
 
-.game_holder {
+body {
+    background-color: lightgray;
+}
+
+.inventory-holder {
+    height: 58%;
+    width: 95%;
+    display: inline-block;
+    border: 1px solid black;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.skills-holder {
+    height: 58%;
+    width: 95%;
+    display: inline-block;
+    border: 1px solid black;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.skills-holder {
+    height: 58%;
+    width: 95%;
+    display: inline-block;
+    border: 1px solid black;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.inventory-item {
+    display: inline-block;
+    width: 15%;
+    margin: 10px;
+    border: 3px solid black;
+}
+
+.inventory-item:hover {
+    cursor: pointer;
+    color: gray;
+    border-color: gray;
+}
+
+.inventory-item-name {
+    text-align: center;
+}
+
+.inventory-item-picture {
+    width: 100%;
+    max-height: 90px;
+    text-align: center;
+}
+
+.backToMenu {
+    background-color: darkgray;
+    float: left;
+    clear: both;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.backToMenu:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: gray;
+}
+
+.menu {
+    height: 600px;
+    width: 800px;
+    border: 1px solid black;
+    background-color: lightgray;
+}
+
+.menu-buttons {
+    margin-top: 20%;
+    margin-left: 40%;
+}
+
+.menu-button {
+    background-color: darkgray;
+    display: inline-block;
+    float: left;
+    clear: both;
+    margin-bottom: 30px;
+    padding: 10px;
+    font-size: 30px;
+}
+
+.menu-button:hover {
+    cursor: pointer;
+    color: gray;
+}
+
+.game-holder {
     height: 800px;
     width: 1220px;
     margin: 5px;
 }
 
-.left_side_holder {
+.left-side-holder {
     position: absolute;
     display: inline-block;
 
@@ -19,7 +117,7 @@ html {
     margin-top: 5px;
 }
 
-.right_side_holder {
+.right-side-holder {
     left: 47%;
     position: absolute;
     display: inline-block;
@@ -31,7 +129,7 @@ html {
     margin-top: 5px;
 }
 
-.description_holder {
+.description-holder {
     height: 58%;
     width: 95%;
     display: inline-block;
@@ -45,8 +143,8 @@ html {
     padding: 10px;
 }
 
-.options_holder {
-    height: 38%;
+.options-holder {
+    height: 37%;
     width: 95%;
     display: inline-block;
     border: 1px solid black;
@@ -55,7 +153,7 @@ html {
     margin-top: 5px;
 }
 
-.illustration_holder {
+.illustration-holder {
     height: 69%;
     width: 95%;
     display: inline-block;
@@ -66,7 +164,7 @@ html {
 }
 
 
-.inventory_holder {
+.status-holder {
     height: 26%;
     width: 95%;
     display: inline-block;
@@ -81,7 +179,7 @@ html {
 }
 
 .option {
-    background-color: lightgray;
+    background-color: darkgray;
     display: inline-block;
     float: left;
     clear: both;
@@ -98,4 +196,21 @@ html {
 .image {
     height: 100%;
     width: 100%;
+}
+
+.status-button {
+    display: inline-block;
+    clear: none;
+    margin: 5px;
+}
+
+.indicator {
+    display: block;
+    clear: both;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.hide {
+    display: none;
 }
