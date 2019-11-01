@@ -209,19 +209,19 @@ const items = {
                 changeNeeds: [0, 0, -2, 0]
             }
     },
-    rat : {
-        name: 'Съедобный крысак',
-        id: 'rat',
-        src: 'pictures/items/rat.jpg',
+    mushroom : {
+        name: 'Съедобный грибочек',
+        id: 'mushroom',
+        src: 'pictures/items/mushroom.jpg',
         consumable: true,
         effects: {
             changeNeeds: [0, 0, -2, 0]
         }
     },
-    trunk : {
-        name: 'Слоновий хобот',
-        id: 'trunk',
-        src: 'pictures/items/trunk.jpg',
+    hazelnut : {
+        name: 'Лесной орешек',
+        id: 'hazelnut',
+        src: 'pictures/items/hazelnut.jpg',
         consumable: true,
         effects: {
             changeNeeds: [0, 0, -2, 0]
@@ -427,7 +427,7 @@ const scenes = {
                 ]
             },
             search: {
-                actionDescription: "Поиск",
+                actionDescription: "Порыскать по кустам",
                 effects: [
                     {type: effects.changeNeeds, payload: [0, 3, 0, 2]},
                     {type: effects.getRandomItem, payload: 1}
@@ -456,7 +456,7 @@ const scenes = {
                     ]
                 },
                 search: {
-                    actionDescription: "Поиск",
+                    actionDescription: "Поискать по огородам",
                     effects: [
                         {type: effects.changeNeeds, payload: [0, 1, 1, 1]},
                         {type: effects.getRandomItem, payload: 3}
@@ -497,7 +497,7 @@ const scenes = {
                     ]
                 },
                 search: {
-                    actionDescription: "Поиск",
+                    actionDescription: "Напиться воды",
                     effects: [
                         {type: effects.changeNeeds, payload: [0, 1, 1, -15]},
                     ]
