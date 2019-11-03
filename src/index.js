@@ -1,3 +1,12 @@
+import './styles.css';
+import {playerStatus} from "./content/playerStatus";
+import {paramsMap} from "./content/paramsMap";
+import {items} from "./content/items";
+import {specialItems} from "./content/specialItems";
+import {skills} from "./content/skills";
+import {effects} from "./content/effects";
+import {scenes} from "./content/scenes";
+
 const description = document.querySelector('.description');
 const options = document.querySelector('.options');
 const picture = document.querySelector('.illustration-holder');
@@ -73,9 +82,7 @@ getRandomDirection = () => {
     return scenesArray[Math.floor(Math.random() * Math.floor(scenesArray.length))]
 };
 
-import {playerStatus} from "./content/playerStatus";
 
-import {paramsMap} from "./content/paramsMap";
 
 const changeStatusIndicator = (param, target) => {
     paramsMap[param].forEach(item => {
@@ -92,12 +99,6 @@ const changeStatusIndicators = function () {
     changeStatusIndicator('thirst', thirst);
     changeStatusIndicator('hunger', hunger)
 };
-
-import {items} from "./content/items";
-
-import {specialItems} from "./content/specialItems";
-
-import {skills} from "./content/skills";
 
 const getDomElement = (tag = 'div', text, id, src, classlist) => {
     const element = document.createElement(tag);
@@ -120,10 +121,6 @@ const killPlayer = () => {
         renderScene('youDiedScene');
     }
 };
-
-import {effects} from "./content/effects";
-
-import {scenes} from "./content/scenes";
 
 const renderOption = function (action) {
     const option = getDomElement('li', action.actionDescription);

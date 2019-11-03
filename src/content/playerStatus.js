@@ -1,3 +1,10 @@
+import {effects} from "./effects";
+import {items} from "./items";
+import {specialItems} from "./specialItems";
+import {scenes} from "./scenes";
+import {skills} from "./skills";
+import {paramsMap} from "./paramsMap";
+
 const playerStatus = {
     inventory: [],
     skills: [],

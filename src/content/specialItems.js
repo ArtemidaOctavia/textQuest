@@ -1,3 +1,10 @@
+import {effects} from "./effects";
+import {playerStatus} from "./playerStatus";
+import {items} from "./items";
+import {scenes} from "./scenes";
+import {skills} from "./skills";
+import {paramsMap} from "./paramsMap";
+
 const specialItems = {
     fullBottle: {
         name: 'Полная бутылка',
