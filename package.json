@@ -1,0 +1,24 @@
+{
+  "name": "textquest",
+  "version": "1.0.0",
+  "description": "Demo: https://artemidaoctavia.github.io/textQuest/",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArtemidaOctavia/textQuest.git"
+  },
+  "author": "ArtemidaOctavia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArtemidaOctavia/textQuest/issues"
+  },
+  "homepage": "https://github.com/ArtemidaOctavia/textQuest#readme",
+  "devDependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
