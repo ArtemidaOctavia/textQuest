@@ -1,9 +1,6 @@
 import './styles.css';
 import {playerStatus} from "./content/playerStatus";
 import {paramsMap} from "./content/paramsMap";
-import {items} from "./content/items";
-import {specialItems} from "./content/specialItems";
-import {skills} from "./content/skills";
 import {effects} from "./content/effects";
 import {scenes} from "./content/scenes";
 
@@ -56,7 +53,7 @@ const isOpen = (element) => {
 skillsButton.addEventListener('click', function () {
     if (isOpen(skillsHolder)) {
         descriptionHolder.classList.remove('hide');
-        inventoryHolder.classList.add('hide')
+        inventoryHolder.classList.add('hide');
         skillsHolder.classList.add('hide');
     } else {
         skillsHolder.classList.remove('hide');
@@ -77,12 +74,10 @@ inventoryButton.addEventListener('click', function () {
     }
 });
 
-getRandomDirection = () => {
+const getRandomDirection = function () {
     const scenesArray = ['woodScene', 'riverScene', 'gardenScene'];
     return scenesArray[Math.floor(Math.random() * Math.floor(scenesArray.length))]
 };
-
-
 
 const changeStatusIndicator = (param, target) => {
     paramsMap[param].forEach(item => {
@@ -109,7 +104,7 @@ const getDomElement = (tag = 'div', text, id, src, classlist) => {
     return element;
 };
 
-getRandomKey = (targetObject) => {
+const getRandomKey = function (targetObject) {
     return targetObject[Object.keys(targetObject)[Math.floor(Math.random() * Math.floor(Object.keys(targetObject).length))]];
 };
 
@@ -151,7 +146,7 @@ const renderScene = function (id){
     description.textContent = scene.description;
     renderPicture(scene);
     killChildren(options);
-    for (const option in scene.actions) {
-        renderOption(scene.actions[option]);
+    for (const action in scene.actions) {
+        renderOption(scene.actions[action]);
     }
 };

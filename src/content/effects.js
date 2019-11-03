@@ -1,10 +1,7 @@
 import {items} from "./items";
 import {playerStatus} from "./playerStatus";
 import {specialItems} from "./specialItems";
-import {scenes} from "./scenes";
 import {skills} from "./skills";
-import {paramsMap} from "./paramsMap";
-
 
 const effects = {
     getRandomItem: (quantity) => {
@@ -121,4 +118,5 @@ const effects = {
         skillsHolder.appendChild(skillHolder);
     }
 };
+
 export {effects}

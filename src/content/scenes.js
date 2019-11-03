@@ -1,9 +1,4 @@
 import {effects} from "./effects";
-import {items} from "./items";
-import {playerStatus} from "./playerStatus";
-import {specialItems} from "./specialItems";
-import {skills} from "./skills";
-import {paramsMap} from "./paramsMap";
 
 const scenes = {
     // scene name = id //
