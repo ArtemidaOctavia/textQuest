@@ -17,21 +17,21 @@ const scenes = {
             forward: {
                 actionDescription: "Идти вперёд",
                 effects: [
-                    {type: effects.moveForward, payload: 'randomDirection'},
-                    {type: effects.changeNeeds, payload: [0, 1, 1, 1]}
+                    {type: 'moveForward', payload: 'randomDirection'},
+                    {type: 'changeNeeds', payload: [0, 1, 1, 1]}
                 ]
             },
             rest: {
                 actionDescription: "Отдохнуть",
                 effects: [
-                    {type: effects.changeNeeds, payload: [0, -4, 1, 1]}
+                    {type: 'changeNeeds', payload: [0, -4, 1, 1]}
                 ]
             },
             search: {
                 actionDescription: "Порыскать по кустам",
                 effects: [
-                    {type: effects.changeNeeds, payload: [0, 3, 0, 2]},
-                    {type: effects.getRandomItem, payload: 1}
+                    {type: 'changeNeeds', payload: [0, 3, 0, 2]},
+                    {type: 'getRandomItem', payload: 1}
                 ]
             },
         }
@@ -46,21 +46,21 @@ const scenes = {
             forward: {
                 actionDescription: "Идти вперёд",
                 effects: [
-                    {type: effects.moveForward, payload: 'randomDirection'},
-                    {type: effects.changeNeeds, payload: [0, 1, 1, 1]}
+                    {type: 'moveForward', payload: 'randomDirection'},
+                    {type: 'changeNeeds', payload: [0, 1, 1, 1]}
                 ]
             },
             rest: {
                 actionDescription: "Отдохнуть",
                 effects: [
-                    {type: effects.changeNeeds, payload: [0, -4, 1, 1]}
+                    {type: 'changeNeeds', payload: [0, -4, 1, 1]}
                 ]
             },
             search: {
                 actionDescription: "Поискать по огородам",
                 effects: [
-                    {type: effects.changeNeeds, payload: [0, 1, 1, 1]},
-                    {type: effects.getRandomItem, payload: 3}
+                    {type: 'changeNeeds', payload: [0, 1, 1, 1]},
+                    {type: 'getRandomItem', payload: 3}
                 ]
             },
         }
@@ -86,21 +86,21 @@ const scenes = {
             forward: {
                 actionDescription: "Идти вперёд",
                 effects: [
-                    {type: effects.moveForward, payload: 'randomDirection'},
-                    {type: effects.changeNeeds, payload: [0, 1, 1, 1]}
+                    {type: 'moveForward', payload: 'randomDirection'},
+                    {type: 'changeNeeds', payload: [0, 1, 1, 1]}
 
                 ]
             },
             rest: {
                 actionDescription: "Отдохнуть",
                 effects: [
-                    {type: effects.changeNeeds, payload: [0, -4, 1, 1]}
+                    {type: 'changeNeeds', payload: [0, -4, 1, 1]}
                 ]
             },
             search: {
                 actionDescription: "Напиться воды",
                 effects: [
-                    {type: effects.changeNeeds, payload: [0, 1, 1, -15]},
+                    {type: 'changeNeeds', payload: [0, 1, 1, -15]},
                 ]
             },
         }
@@ -119,14 +119,14 @@ const scenes = {
             newGame: {
                 actionDescription: 'Новая игра',
                 effects: [
-                    {type: effects.startNewGame, payload: ''}
+                    {type: 'startNewGame', payload: ''}
                 ]
             },
             menu: {
                 actionDescription: 'Главное меню',
                 effects: [
-                    {type: effects.backToMainMenu, payload: ''},
-                    {type: effects.startNewGame, payload: ''}
+                    {type: 'backToMainMenu', payload: ''},
+                    {type: 'startNewGame', payload: ''}
                 ]
             }
         }

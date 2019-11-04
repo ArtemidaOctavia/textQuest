@@ -14,7 +14,6 @@ import {menu} from "../utility/domElements";
 import {gameplayUI} from "../utility/domElements";
 import {skillsHolder} from "../utility/domElements";
 
-
 const effects = {
     getRandomItem: (quantity) => {
         for (let i = 1; i <= quantity; i++) {

@@ -40,11 +40,13 @@ aboutProject.addEventListener('click', function () {
     projectInformation.classList.remove('hide');
     backButton.classList.remove('hide')
 });
+
 newGame.addEventListener('click', function() {
     effects.startNewGame();
     menu.classList.add('hide');
     gameplayUI.classList.remove('hide');
 });
+
 backButton.addEventListener('click', function() {
     menuButtons.classList.remove('hide');
     projectInformation.classList.add('hide');

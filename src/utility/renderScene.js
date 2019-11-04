@@ -3,6 +3,7 @@ import {renderOption} from "./renderOption";
 import {renderPicture} from "./renderPicture";
 import {killChildren} from "./killChildren";
 import {description} from "./domElements";
+import {options} from "./domElements";
 
 const renderScene = function (id){
     let scene = scenes[id];

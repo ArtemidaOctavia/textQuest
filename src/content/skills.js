@@ -8,4 +8,5 @@ const skills = {
         }
     }
 };
+
 export {skills}
