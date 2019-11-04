@@ -1,5 +1,6 @@
 import {killChildren} from "./killChildren";
 import {getDomElement} from "./getDomElement";
+import {picture} from "./domElements";
 
 const renderPicture = function (scene) {
     killChildren(picture);

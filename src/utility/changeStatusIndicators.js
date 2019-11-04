@@ -1,4 +1,8 @@
 import {changeStatusIndicator} from "./changeStatusIndicator";
+import {health} from "./domElements";
+import {fatigue} from "./domElements";
+import {thirst} from "./domElements";
+import {hunger} from "./domElements";
 
 const changeStatusIndicators = function () {
     changeStatusIndicator('health', health);

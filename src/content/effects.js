@@ -9,6 +9,11 @@ import {renderScene} from "../utility/renderScene";
 import {changeStatusIndicators} from "../utility/changeStatusIndicators";
 import {killPlayer} from "../utility/killPlayer";
 import {getRandomDirection} from "../utility/getRandomDirection";
+import {inventoryHolder} from "../utility/domElements";
+import {menu} from "../utility/domElements";
+import {gameplayUI} from "../utility/domElements";
+import {skillsHolder} from "../utility/domElements";
+
 
 const effects = {
     getRandomItem: (quantity) => {
