@@ -2,6 +2,13 @@ import {items} from "./items";
 import {playerStatus} from "./playerStatus";
 import {specialItems} from "./specialItems";
 import {skills} from "./skills";
+import {getRandomKey} from "../utility/getRandomKey";
+import {getDomElement} from "../utility/getDomElement";
+import {killChildren} from "../utility/killChildren";
+import {renderScene} from "../utility/renderScene";
+import {changeStatusIndicators} from "../utility/changeStatusIndicators";
+import {killPlayer} from "../utility/killPlayer";
+import {getRandomDirection} from "../utility/getRandomDirection";
 
 const effects = {
     getRandomItem: (quantity) => {
@@ -47,14 +54,6 @@ const effects = {
     takeAwayItems: (items) => {
         items.forEach(function ({name, id}) { // { name, id }
             const itemIndex = playerStatus['inventory'].indexOf(name);
-            /*const oldObject = { a: 'a' };
-
-            const newObject = {
-                ...oldObject,
-                b: 'b',
-            };*/
-
-            // rewrite using filter;
             playerStatus['inventory'].splice(itemIndex, 1);
             document.getElementById(id).remove();
         })
