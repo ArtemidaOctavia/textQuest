@@ -19,7 +19,9 @@ const inventoryHolder = document.querySelector('.inventory-holder');
 const skillsHolder = document.querySelector('.skills-holder');
 
 export {
-    description, options, picture, newGame, menu, gameplayUI, aboutProject, menuButtons, projectInformation,
-    backButton, health, fatigue, hunger, thirst, inventoryButton, skillsButton, descriptionHolder, inventoryHolder,
-    skillsHolder
-}
+  description, options, picture, newGame, menu, gameplayUI, aboutProject,
+  menuButtons, projectInformation,
+  backButton, health, fatigue, hunger, thirst, inventoryButton,
+  skillsButton, descriptionHolder, inventoryHolder,
+  skillsHolder,
+};

@@ -1,11 +1,11 @@
 const isOpen = (element) => {
-    let classlist = element.classList;
-    let trigger = true;
-    classlist.forEach((element) => {
-        if (element === "hide") {
-            trigger = !trigger
-        }
-    });
-    return trigger;
+  const classlist = element.classList;
+  let trigger = true;
+  classlist.forEach((elemClass) => {
+    if (elemClass === 'hide') {
+      trigger = !trigger;
+    }
+  });
+  return trigger;
 };
-export {isOpen}
+export { isOpen };

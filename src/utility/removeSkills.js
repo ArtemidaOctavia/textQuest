@@ -1,10 +1,10 @@
-import {playerStatus} from "../content/playerStatus";
-import {skillsHolder} from "./domElements";
-import {killChildren} from "./killChildren";
+import { playerStatus } from '../content/playerStatus';
+import { skillsHolder } from './domElements';
+import { killChildren } from './killChildren';
 
 const removeSkills = () => {
-    playerStatus.skills = [];
-    killChildren(skillsHolder);
+  playerStatus.skills = [];
+  killChildren(skillsHolder);
 };
 
-export {removeSkills};
+export { removeSkills };
