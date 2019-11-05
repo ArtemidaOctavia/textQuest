@@ -1,4 +1,4 @@
-const getDomElement = function (tag = 'div', text, id, src, classlist) {
+const getDomElement = (tag = 'div', text, id, src, classlist) => {
     const element = document.createElement(tag);
     if (text) {element.textContent = text}
     if (id) {element.id = id}

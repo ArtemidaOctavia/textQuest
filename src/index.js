@@ -2,26 +2,6 @@ import './styles.css';
 import {isOpen} from "./utility/isOpen";
 import {effects} from "./content/effects";
 
-// const description = document.querySelector('.description');
-// const options = document.querySelector('.options');
-// const picture = document.querySelector('.illustration-holder');
-// const newGame = document.querySelector('.new-game');
-// const menu = document.querySelector('.menu');
-// const gameplayUI = document.querySelector('.game-holder');
-// const aboutProject = document.querySelector('.about-project');
-// const menuButtons = document.querySelector('.menu-buttons');
-// const projectInformation = document.querySelector('.project-information');
-// const backButton = document.querySelector('.backToMenu');
-// const health = document.querySelector('.health');
-// const fatigue = document.querySelector('.fatigue');
-// const hunger = document.querySelector('.hunger');
-// const thirst = document.querySelector('.thirst');
-// const inventoryButton = document.querySelector('.inventory-button');
-// const skillsButton = document.querySelector('.skills-button');
-// const descriptionHolder = document.querySelector('.description-holder');
-// const inventoryHolder = document.querySelector('.inventory-holder');
-// const skillsHolder = document.querySelector('.skills-holder');
-
 import {newGame} from "./utility/domElements";
 import {aboutProject} from "./utility/domElements";
 import {gameplayUI} from "./utility/domElements";
@@ -35,25 +15,25 @@ import {skillsHolder} from "./utility/domElements";
 import {menuButtons} from "./utility/domElements";
 import {projectInformation} from "./utility/domElements";
 
-aboutProject.addEventListener('click', function () {
+aboutProject.addEventListener('click', () => {
     menuButtons.classList.add('hide');
     projectInformation.classList.remove('hide');
     backButton.classList.remove('hide')
 });
 
-newGame.addEventListener('click', function() {
+newGame.addEventListener('click', () => {
     effects.startNewGame();
     menu.classList.add('hide');
     gameplayUI.classList.remove('hide');
 });
 
-backButton.addEventListener('click', function() {
+backButton.addEventListener('click', () => {
     menuButtons.classList.remove('hide');
     projectInformation.classList.add('hide');
     backButton.classList.add('hide')
 });
 
-skillsButton.addEventListener('click', function () {
+skillsButton.addEventListener('click', () => {
     if (isOpen(skillsHolder)) {
         descriptionHolder.classList.remove('hide');
         inventoryHolder.classList.add('hide');
@@ -65,7 +45,7 @@ skillsButton.addEventListener('click', function () {
     }
 });
 
-inventoryButton.addEventListener('click', function () {
+inventoryButton.addEventListener('click', () => {
     if (isOpen(inventoryHolder)) {
         descriptionHolder.classList.remove('hide');
         inventoryHolder.classList.add('hide');

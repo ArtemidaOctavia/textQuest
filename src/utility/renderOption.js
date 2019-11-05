@@ -2,11 +2,11 @@ import {getDomElement} from "./getDomElement";
 import {options} from "./domElements";
 import {effects} from "../content/effects";
 
-const renderOption = function (action) {
+const renderOption = (action) => {
     const option = getDomElement('li', action.actionDescription);
     option.classList.add('option');
-    option.addEventListener('click', function(){
-        action.effects.forEach(function (effect) {
+    option.addEventListener('click', () => {
+        action.effects.forEach((effect) => {
             effects[effect['type']](effect.payload);
         })
     });

@@ -1,4 +1,4 @@
-const killChildren = function (parent) {
+const killChildren = (parent) => {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }

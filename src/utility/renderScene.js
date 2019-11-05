@@ -5,7 +5,7 @@ import {killChildren} from "./killChildren";
 import {description} from "./domElements";
 import {options} from "./domElements";
 
-const renderScene = function (id){
+const renderScene = (id) => {
     let scene = scenes[id];
     description.textContent = scene.description;
     renderPicture(scene);

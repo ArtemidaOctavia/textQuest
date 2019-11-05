@@ -4,7 +4,7 @@ import {fatigue} from "./domElements";
 import {thirst} from "./domElements";
 import {hunger} from "./domElements";
 
-const changeStatusIndicators = function () {
+const changeStatusIndicators = () => {
     changeStatusIndicator('health', health);
     changeStatusIndicator('fatigue', fatigue);
     changeStatusIndicator('thirst', thirst);

@@ -1,7 +1,7 @@
-const isOpen = function (element) {
+const isOpen = (element) => {
     let classlist = element.classList;
     let trigger = true;
-    classlist.forEach(function (element) {
+    classlist.forEach((element) => {
         if (element === "hide") {
             trigger = !trigger
         }

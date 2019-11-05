@@ -1,7 +1,7 @@
 import {paramsMap} from "../content/paramsMap";
 import {playerStatus} from "../content/playerStatus";
 
-const changeStatusIndicator = function (param, target) {
+const changeStatusIndicator = (param, target) => {
     paramsMap[param].forEach(item => {
         if (playerStatus[param] >= item.threshold) {
             target.textContent = item.label;

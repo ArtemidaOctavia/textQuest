@@ -24,7 +24,7 @@ const effects = {
             itemHolder.appendChild(getDomElement('img', '', '', item.src, "inventory-item-picture"));
             itemHolder.appendChild(getDomElement('div', item.name, '', '', 'inventory-item-name'));
             inventoryHolder.appendChild(itemHolder);
-            itemHolder.addEventListener('click', function () {
+            itemHolder.addEventListener('click', () => {
                 for (const effect in item.effects) {
                     effects[effect](item.effects[effect]);
                 }
@@ -47,7 +47,7 @@ const effects = {
         itemHolder.appendChild(getDomElement('img', '', '', item.src, "inventory-item-picture"));
         itemHolder.appendChild(getDomElement('div', item.name, '', '', 'inventory-item-name'));
         inventoryHolder.appendChild(itemHolder);
-        itemHolder.addEventListener('click', function () {
+        itemHolder.addEventListener('click', () => {
             for (const effect in item.effects) {
                 effects[effect](item.effects[effect]);
             }
@@ -57,7 +57,7 @@ const effects = {
         })
     },
     takeAwayItems: (items) => {
-        items.forEach(function ({name, id}) { // { name, id }
+        items.forEach(({name, id}) => { // { name, id }
             const itemIndex = playerStatus['inventory'].indexOf(name);
             playerStatus['inventory'].splice(itemIndex, 1);
             document.getElementById(id).remove();
@@ -116,7 +116,7 @@ const effects = {
         const skillHolder = getDomElement('div', '', '', '', "inventory-item");
         skillHolder.appendChild(getDomElement('img', '', '', target.src, "inventory-item-picture"));
         skillHolder.appendChild(getDomElement('div', target.name, '', '', 'inventory-item-name'));
-        skillHolder.addEventListener('click', function () {
+        skillHolder.addEventListener('click', () => {
             for (const effect in target.effects) {
                 effects[effect](target.effects[effect]);
             }
