@@ -13,6 +13,7 @@ import {inventoryHolder} from "../utility/domElements";
 import {menu} from "../utility/domElements";
 import {gameplayUI} from "../utility/domElements";
 import {skillsHolder} from "../utility/domElements";
+import {removeSkills} from "../utility/removeSkills";
 
 const effects = {
     getRandomItem: (quantity) => {
@@ -24,7 +25,7 @@ const effects = {
             itemHolder.appendChild(getDomElement('div', item.name, '', '', 'inventory-item-name'));
             inventoryHolder.appendChild(itemHolder);
             itemHolder.addEventListener('click', function () {
-                for (effect in item.effects) {
+                for (const effect in item.effects) {
                     effects[effect](item.effects[effect]);
                 }
                 if (item.consumable) {
@@ -47,7 +48,7 @@ const effects = {
         itemHolder.appendChild(getDomElement('div', item.name, '', '', 'inventory-item-name'));
         inventoryHolder.appendChild(itemHolder);
         itemHolder.addEventListener('click', function () {
-            for (effect in item.effects) {
+            for (const effect in item.effects) {
                 effects[effect](item.effects[effect]);
             }
             if (item.consumable) {
@@ -66,6 +67,7 @@ const effects = {
         playerStatus['inventory'] = [];
         killChildren(inventoryHolder)
     },
+
     moveTo: (id) => {
         renderScene(id);
     },
@@ -98,6 +100,7 @@ const effects = {
         playerStatus.hunger = 0;
         playerStatus.thirst = 0;
         changeStatusIndicators();
+        removeSkills();
         effects.takeAwayAllItems();
         effects.getRandomItem(1);
         effects.getSkill('findRiver');
@@ -114,7 +117,7 @@ const effects = {
         skillHolder.appendChild(getDomElement('img', '', '', target.src, "inventory-item-picture"));
         skillHolder.appendChild(getDomElement('div', target.name, '', '', 'inventory-item-name'));
         skillHolder.addEventListener('click', function () {
-            for (effect in target.effects) {
+            for (const effect in target.effects) {
                 effects[effect](target.effects[effect]);
             }
         });

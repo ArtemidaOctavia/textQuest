@@ -2,7 +2,7 @@ const items = {
     apple: {
         name: 'Сытное яблочко',
         id: 'apple',
-        src: 'pictures/items/apple.jpg',
+        src: 'https://i.ibb.co/K7D7Jjn/apple.jpg',
         consumable: true,
         effects: {
             changeNeeds: [0, 0, -2, 0]
@@ -11,7 +11,7 @@ const items = {
     food : {
         name: 'Вкуснейший супец',
         id: 'food',
-        src: 'pictures/items/food.jpg',
+        src: 'https://i.ibb.co/H7bqV3R/food.jpg',
         consumable: true,
         effects: {
             changeNeeds: [0, 0, -2, 0]
@@ -20,7 +20,7 @@ const items = {
     mushroom : {
         name: 'Съедобный грибочек',
         id: 'mushroom',
-        src: 'pictures/items/mushroom.jpg',
+        src: 'https://i.ibb.co/1LZgZbn/mushroom.jpg',
         consumable: true,
         effects: {
             changeNeeds: [0, 0, -2, 0]
@@ -29,7 +29,7 @@ const items = {
     hazelnut : {
         name: 'Лесной орешек',
         id: 'hazelnut',
-        src: 'pictures/items/hazelnut.jpg',
+        src: 'https://i.ibb.co/b3jmR3k/hazelnut.jpg',
         consumable: true,
         effects: {
             changeNeeds: [0, 0, -2, 0]
@@ -38,7 +38,7 @@ const items = {
     emptyBottle: {
         name: 'Пустая бутылка',
         id: 'emptyBottle',
-        src: 'pictures/items/emptyBottle.jpg',
+        src: 'https://i.ibb.co/pvKYzJR/empty-Bottle.jpg',
         consumable: true,
         effects: {
             getSpecialItem: 'fullBottle',
