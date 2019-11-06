@@ -7,13 +7,13 @@ import { changeStatusIndicators } from '../utility/changeStatusIndicators';
 import { killPlayerIfExhausted } from '../utility/killPlayerIfExhausted';
 import { getRandomDirection } from '../utility/getRandomDirection';
 import {
-  inventoryHolder, menu, gameplayUI,
+  inventoryHolder, menu, gameplayUI, skillsHolder,
 } from '../utility/domElements';
-import { removeSkills } from '../utility/removeSkills';
 import { getItemInDom } from '../utility/getItemInDom';
 import { getRandomKey } from '../utility/getRandomKey';
 import { items } from './items';
 import { getSkillInDom } from '../utility/getSkillInDom';
+import { resetStatus } from '../utility/resetStatus';
 
 const effects = {
   getRandomItem: (quantity) => {
@@ -38,10 +38,6 @@ const effects = {
       playerStatus.inventory.splice(itemIndex, 1);
       document.getElementById(id).remove();
     });
-  },
-  takeAwayAllItems: () => {
-    playerStatus.inventory = [];
-    killChildren(inventoryHolder);
   },
   moveTo: (id) => {
     renderScene(id);
@@ -70,14 +66,11 @@ const effects = {
     renderScene(getRandomDirection());
   },
   startNewGame: () => {
+    resetStatus();
+    killChildren(inventoryHolder);
+    killChildren(skillsHolder);
     renderScene('woodScene');
-    playerStatus.health = 100;
-    playerStatus.fatigue = 0;
-    playerStatus.hunger = 0;
-    playerStatus.thirst = 0;
     changeStatusIndicators();
-    removeSkills();
-    effects.takeAwayAllItems();
     effects.getRandomItem(1);
     effects.getSkill('findRiver');
   },
