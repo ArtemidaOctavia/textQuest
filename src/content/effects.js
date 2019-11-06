@@ -1,42 +1,26 @@
-import { items } from './items';
 import { playerStatus } from './playerStatus';
 import { specialItems } from './specialItems';
 import { skills } from './skills';
-import { getRandomKey } from '../utility/getRandomKey';
 import { getDomElement } from '../utility/getDomElement';
 import { killChildren } from '../utility/killChildren';
 import { renderScene } from '../utility/renderScene';
 import { changeStatusIndicators } from '../utility/changeStatusIndicators';
-import { killPlayer } from '../utility/killPlayer';
+import { killPlayerIfExhausted } from '../utility/killPlayerIfExhausted';
 import { getRandomDirection } from '../utility/getRandomDirection';
 import {
   inventoryHolder, menu, gameplayUI, skillsHolder,
 } from '../utility/domElements';
-
-
 import { removeSkills } from '../utility/removeSkills';
+import { getItemInDom } from '../utility/getItemInDom';
+import { getRandomKey } from '../utility/getRandomKey';
+import { items } from './items';
 
 const effects = {
   getRandomItem: (quantity) => {
     for (let i = 1; i <= quantity; i += 1) {
-      const item = getRandomKey(items);
-      playerStatus.inventory.push(item.name);
-      const itemHolder = getDomElement('div', '', item.id, '', 'inventory-item');
-      itemHolder.appendChild(getDomElement('img', '', '', item.src, 'inventory-item-picture'));
-      itemHolder.appendChild(getDomElement('div', item.name, '', '', 'inventory-item-name'));
-      inventoryHolder.appendChild(itemHolder);
-      itemHolder.addEventListener('click', () => {
-        Object.keys(item.effects).forEach((effect) => {
-          effects[effect](item.effects[effect]);
-        });
-        if (item.consumable) {
-          effects.takeAwayItems([item]);
-        }
-      });
-    }
-    if (playerStatus.inventory.length > 15) {
-      while (playerStatus.inventory.length !== 15) {
-        playerStatus.inventory.splice(-1);
+      getItemInDom(getRandomKey(items));
+      while (playerStatus.inventory.length > 15) {
+        playerStatus.inventory.pop();
         inventoryHolder.removeChild(inventoryHolder.lastChild);
       }
     }
@@ -58,7 +42,7 @@ const effects = {
     });
   },
   takeAwayItems: (itemsForTake) => {
-    itemsForTake.forEach(({ name, id }) => { // { name, id }
+    itemsForTake.forEach(({ name, id }) => {
       const itemIndex = playerStatus.inventory.indexOf(name);
       playerStatus.inventory.splice(itemIndex, 1);
       document.getElementById(id).remove();
@@ -68,15 +52,14 @@ const effects = {
     playerStatus.inventory = [];
     killChildren(inventoryHolder);
   },
-
   moveTo: (id) => {
     renderScene(id);
   },
-  changeNeeds: (value) => {
-    playerStatus.health += value[0];
-    playerStatus.fatigue += value[1];
-    playerStatus.hunger += value[2];
-    playerStatus.thirst += value[3];
+  changeNeeds: ([health, fatigue, hunger, thirst]) => {
+    playerStatus.health += health;
+    playerStatus.fatigue += fatigue;
+    playerStatus.hunger += hunger;
+    playerStatus.thirst += thirst;
     if (playerStatus.health >= 100) {
       playerStatus.health = 100;
     }
@@ -90,7 +73,7 @@ const effects = {
       playerStatus.thirst = 0;
     }
     changeStatusIndicators();
-    killPlayer();
+    killPlayerIfExhausted();
   },
   moveForward: () => {
     renderScene(getRandomDirection());

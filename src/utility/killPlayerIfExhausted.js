@@ -1,7 +1,7 @@
 import { playerStatus } from '../content/playerStatus';
 import { renderScene } from './renderScene';
 
-const killPlayer = () => {
+const killPlayerIfExhausted = () => {
   if (playerStatus.health <= 0
         || playerStatus.fatigue >= 15
         || playerStatus.hunger >= 15
@@ -10,4 +10,4 @@ const killPlayer = () => {
   }
 };
 
-export { killPlayer };
+export { killPlayerIfExhausted };

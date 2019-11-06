@@ -117,14 +117,14 @@ const scenes = {
       newGame: {
         actionDescription: 'Новая игра',
         effects: [
-          { type: 'startNewGame', payload: '' },
+          { type: 'startNewGame'},
         ],
       },
       menu: {
         actionDescription: 'Главное меню',
         effects: [
-          { type: 'backToMainMenu', payload: '' },
-          { type: 'startNewGame', payload: '' },
+          { type: 'backToMainMenu'},
+          { type: 'startNewGame'},
         ],
       },
     },
