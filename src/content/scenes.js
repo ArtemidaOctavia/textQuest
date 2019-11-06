@@ -29,7 +29,7 @@ const scenes = {
         actionDescription: 'Порыскать по кустам',
         effects: [
           { type: 'changeNeeds', payload: [0, 3, 0, 2] },
-          { type: 'getRandomItem', payload: 1 },
+          { type: 'getItem', payload: [1] },
         ],
       },
     },
@@ -58,7 +58,7 @@ const scenes = {
         actionDescription: 'Поискать по огородам',
         effects: [
           { type: 'changeNeeds', payload: [0, 1, 1, 1] },
-          { type: 'getRandomItem', payload: 3 },
+          { type: 'getItem', payload: [3] },
         ],
       },
     },

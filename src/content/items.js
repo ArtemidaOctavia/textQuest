@@ -35,13 +35,23 @@ const items = {
       changeNeeds: [0, 0, -2, 0],
     },
   },
+  fullBottle: {
+    name: 'Полная бутылка',
+    id: 'fullBottle',
+    src: 'https://i.ibb.co/NV2zCNr/full-Bottle.jpg',
+    cannotBeAttainedRandomly: true,
+    consumable: true,
+    effects: {
+      changeNeeds: [0, -1, 0, -2],
+    },
+  },
   emptyBottle: {
     name: 'Пустая бутылка',
     id: 'emptyBottle',
     src: 'https://i.ibb.co/pvKYzJR/empty-Bottle.jpg',
     consumable: true,
     effects: {
-      getSpecialItem: 'fullBottle',
+      getItem: [1, 'fullBottle'],
       changeNeeds: [0, 2, 0, 1],
     },
   },

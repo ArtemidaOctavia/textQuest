@@ -1,5 +1,4 @@
 import { playerStatus } from './playerStatus';
-import { specialItems } from './specialItems';
 import { skills } from './skills';
 import { killChildren } from '../utility/killChildren';
 import { renderScene } from '../utility/renderScene';
@@ -16,9 +15,15 @@ import { getSkillInDom } from '../utility/getSkillInDom';
 import { resetStatus } from '../utility/resetStatus';
 
 const effects = {
-  getRandomItem: (quantity) => {
+  getItem: ([quantity, specificItem]) => {
     for (let i = 1; i <= quantity; i += 1) {
-      const item = getRandomKey(items);
+      let item = getRandomKey(items);
+      while (item.cannotBeAttainedRandomly) {
+        item = getRandomKey(items);
+      }
+      if (specificItem) {
+        item = items[specificItem];
+      }
       playerStatus.inventory.push(item.name);
       getItemInDom(item);
       while (playerStatus.inventory.length > 15) {
@@ -26,11 +31,6 @@ const effects = {
         inventoryHolder.removeChild(inventoryHolder.lastChild);
       }
     }
-  },
-  getSpecialItem: (specialItem) => {
-    const item = specialItems[specialItem];
-    playerStatus.inventory.push(item.name);
-    getItemInDom(item);
   },
   takeAwayItems: (itemsForTake) => {
     itemsForTake.forEach(({ name, id }) => {
@@ -71,7 +71,7 @@ const effects = {
     killChildren(skillsHolder);
     renderScene('woodScene');
     changeStatusIndicators();
-    effects.getRandomItem(1);
+    effects.getItem([1]);
     effects.getSkill('findRiver');
   },
   backToMainMenu: () => {
