@@ -1,19 +1,19 @@
 import { playerStatus } from './playerStatus';
 import { specialItems } from './specialItems';
 import { skills } from './skills';
-import { getDomElement } from '../utility/getDomElement';
 import { killChildren } from '../utility/killChildren';
 import { renderScene } from '../utility/renderScene';
 import { changeStatusIndicators } from '../utility/changeStatusIndicators';
 import { killPlayerIfExhausted } from '../utility/killPlayerIfExhausted';
 import { getRandomDirection } from '../utility/getRandomDirection';
 import {
-  inventoryHolder, menu, gameplayUI, skillsHolder,
+  inventoryHolder, menu, gameplayUI,
 } from '../utility/domElements';
 import { removeSkills } from '../utility/removeSkills';
 import { getItemInDom } from '../utility/getItemInDom';
 import { getRandomKey } from '../utility/getRandomKey';
 import { items } from './items';
+import { getSkillInDom } from '../utility/getSkillInDom';
 
 const effects = {
   getRandomItem: (quantity) => {
@@ -88,15 +88,7 @@ const effects = {
   getSkill: (skill) => {
     const target = skills[skill];
     playerStatus.skills.push(target.name);
-    const skillHolder = getDomElement('div', '', '', '', 'inventory-item');
-    skillHolder.appendChild(getDomElement('img', '', '', target.src, 'inventory-item-picture'));
-    skillHolder.appendChild(getDomElement('div', target.name, '', '', 'inventory-item-name'));
-    skillHolder.addEventListener('click', () => {
-      Object.keys(target.effects).forEach((effect) => {
-        effects[effect](target.effects[effect]);
-      });
-    });
-    skillsHolder.appendChild(skillHolder);
+    getSkillInDom(target);
   },
 };
 
