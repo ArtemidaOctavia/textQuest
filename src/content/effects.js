@@ -18,7 +18,9 @@ import { items } from './items';
 const effects = {
   getRandomItem: (quantity) => {
     for (let i = 1; i <= quantity; i += 1) {
-      getItemInDom(getRandomKey(items));
+      const item = getRandomKey(items);
+      playerStatus.inventory.push(item.name);
+      getItemInDom(item);
       while (playerStatus.inventory.length > 15) {
         playerStatus.inventory.pop();
         inventoryHolder.removeChild(inventoryHolder.lastChild);
@@ -28,18 +30,7 @@ const effects = {
   getSpecialItem: (specialItem) => {
     const item = specialItems[specialItem];
     playerStatus.inventory.push(item.name);
-    const itemHolder = getDomElement('div', '', item.id, '', 'inventory-item');
-    itemHolder.appendChild(getDomElement('img', '', '', item.src, 'inventory-item-picture'));
-    itemHolder.appendChild(getDomElement('div', item.name, '', '', 'inventory-item-name'));
-    inventoryHolder.appendChild(itemHolder);
-    itemHolder.addEventListener('click', () => {
-      Object.keys(item.effects).forEach((effect) => {
-        effects[effect](item.effects[effect]);
-      });
-      if (item.consumable) {
-        effects.takeAwayItems([item]);
-      }
-    });
+    getItemInDom(item);
   },
   takeAwayItems: (itemsForTake) => {
     itemsForTake.forEach(({ name, id }) => {
@@ -79,6 +70,7 @@ const effects = {
     renderScene(getRandomDirection());
   },
   startNewGame: () => {
+    renderScene('woodScene');
     playerStatus.health = 100;
     playerStatus.fatigue = 0;
     playerStatus.hunger = 0;
@@ -88,7 +80,6 @@ const effects = {
     effects.takeAwayAllItems();
     effects.getRandomItem(1);
     effects.getSkill('findRiver');
-    renderScene('woodScene');
   },
   backToMainMenu: () => {
     menu.classList.remove('hide');

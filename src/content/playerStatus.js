@@ -5,7 +5,7 @@ const playerStatus = {
   fatigue: 0, // max 15
   hunger: 0, // max 15
   thirst: 0, // max 10
-  location: '',
+  location: 'woodScene',
 };
 
 export { playerStatus };
