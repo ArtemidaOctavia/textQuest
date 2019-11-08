@@ -1,4 +1,4 @@
-import {playerStatus, statusLethalValues} from './playerStatus';
+import { playerStatus } from './playerStatus';
 import { skills } from './skills';
 import { killChildren } from '../utility/killChildren';
 import { renderScene } from '../utility/renderScene';
@@ -13,10 +13,11 @@ import { getRandomKey } from '../utility/getRandomKey';
 import { items } from './items';
 import { getSkillInDom } from '../utility/getSkillInDom';
 import { resetStatus } from '../utility/resetStatus';
-import {initialStatus} from "./initialStatus";
+import { initialStatus } from './initialStatus';
 
 const effects = {
-  getItem: ([quantity, specificItem]) => {
+  getItem: ([[min, max], specificItem]) => {
+    const quantity = min + Math.random() * (max + 1 - min);
     for (let i = 1; i <= quantity; i += 1) {
       let item = getRandomKey(items);
       while (item.cannotBeAttainedRandomly) {
@@ -72,7 +73,7 @@ const effects = {
     killChildren(skillsHolder);
     renderScene('woodScene');
     changeStatusIndicators();
-    effects.getItem([1]);
+    effects.getItem([[1, 1]]);
     effects.getSkill('findRiver');
   },
   backToMainMenu: () => {

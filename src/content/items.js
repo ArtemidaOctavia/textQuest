@@ -51,7 +51,7 @@ const items = {
     src: 'https://i.ibb.co/pvKYzJR/empty-Bottle.jpg',
     consumable: true,
     effects: {
-      getItem: [1, 'fullBottle'],
+      getItem: [[[1, 1]], 'fullBottle'],
       changeNeeds: [0, 2, 0, 1],
     },
   },
@@ -69,7 +69,7 @@ const items = {
     id: 'fishingRod',
     src: 'https://i5.walmartimages.com/asr/30881e20-ce61-4778-a949-39b088fd6009_1.497868596fdf88bc6936ff4c19b3cfee.jpeg',
     effects: {
-      getItem: [2, 'roach'],
+      getItem: [[[1, 2]], 'roach'],
       changeNeeds: [0, -1, 0, 0],
     },
   },
