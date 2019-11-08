@@ -39,7 +39,7 @@ const items = {
     name: 'Полная бутылка',
     id: 'fullBottle',
     src: 'https://i.ibb.co/NV2zCNr/full-Bottle.jpg',
-    cannotBeAttainedRandomly: true,
+    specific: true,
     consumable: true,
     effects: {
       changeNeeds: [0, -1, 0, -2],
@@ -55,5 +55,24 @@ const items = {
       changeNeeds: [0, 2, 0, 1],
     },
   },
+  roach: {
+    name: 'Плотва',
+    id: 'roach',
+    src: 'http://www.fishinginireland.info/images/coarse/roach.jpg',
+    consumable: true,
+    effects: {
+      changeNeeds: [0, 0, -2, 0],
+    },
+  },
+  fishingRod: {
+    name: 'Удочка',
+    id: 'fishingRod',
+    src: 'https://i5.walmartimages.com/asr/30881e20-ce61-4778-a949-39b088fd6009_1.497868596fdf88bc6936ff4c19b3cfee.jpeg',
+    effects: {
+      getItem: [2, 'roach'],
+      changeNeeds: [0, -1, 0, 0],
+    },
+  },
 };
+
 export { items };

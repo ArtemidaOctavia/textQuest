@@ -1,11 +1,11 @@
-import { playerStatus } from '../content/playerStatus';
+import {playerStatus, statusLethalValues} from '../content/playerStatus';
 import { renderScene } from './renderScene';
 
 const killPlayerIfExhausted = () => {
-  if (playerStatus.health <= 0
-        || playerStatus.fatigue >= 15
-        || playerStatus.hunger >= 15
-        || playerStatus.thirst >= 10) {
+  if (playerStatus.health <= statusLethalValues.health
+        || playerStatus.fatigue >= statusLethalValues.fatigue
+        || playerStatus.hunger >= statusLethalValues.hunger
+        || playerStatus.thirst >= statusLethalValues.thirst) {
     renderScene('youDiedScene');
   }
 };

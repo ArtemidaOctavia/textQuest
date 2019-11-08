@@ -1,4 +1,4 @@
-import { playerStatus } from './playerStatus';
+import {playerStatus, statusLethalValues} from './playerStatus';
 import { skills } from './skills';
 import { killChildren } from '../utility/killChildren';
 import { renderScene } from '../utility/renderScene';
@@ -8,11 +8,12 @@ import { getRandomDirection } from '../utility/getRandomDirection';
 import {
   inventoryHolder, menu, gameplayUI, skillsHolder,
 } from '../utility/domElements';
-import { getItemInDom } from '../utility/getItemInDom';
+import { setItem } from '../utility/setItem';
 import { getRandomKey } from '../utility/getRandomKey';
 import { items } from './items';
 import { getSkillInDom } from '../utility/getSkillInDom';
 import { resetStatus } from '../utility/resetStatus';
+import {initialStatus} from "./initialStatus";
 
 const effects = {
   getItem: ([quantity, specificItem]) => {
@@ -25,7 +26,7 @@ const effects = {
         item = items[specificItem];
       }
       playerStatus.inventory.push(item.name);
-      getItemInDom(item);
+      setItem(item);
       while (playerStatus.inventory.length > 15) {
         playerStatus.inventory.pop();
         inventoryHolder.removeChild(inventoryHolder.lastChild);
@@ -47,17 +48,17 @@ const effects = {
     playerStatus.fatigue += fatigue;
     playerStatus.hunger += hunger;
     playerStatus.thirst += thirst;
-    if (playerStatus.health >= 100) {
-      playerStatus.health = 100;
+    if (playerStatus.health >= initialStatus.health) {
+      playerStatus.health = initialStatus.health;
     }
-    if (playerStatus.fatigue <= 0) {
-      playerStatus.fatigue = 0;
+    if (playerStatus.fatigue <= initialStatus.fatigue) {
+      playerStatus.fatigue = initialStatus.fatigue;
     }
-    if (playerStatus.hunger <= 0) {
-      playerStatus.hunger = 0;
+    if (playerStatus.hunger <= initialStatus.hunger) {
+      playerStatus.hunger = initialStatus.hunger;
     }
-    if (playerStatus.thirst <= 0) {
-      playerStatus.thirst = 0;
+    if (playerStatus.thirst <= initialStatus.thirst) {
+      playerStatus.thirst = initialStatus.thirst;
     }
     changeStatusIndicators();
     killPlayerIfExhausted();

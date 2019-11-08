@@ -2,7 +2,7 @@ import { getDomElement } from './getDomElement';
 import { effects } from '../content/effects';
 import { inventoryHolder } from './domElements';
 
-const getItemInDom = (item) => {
+const setItem = (item) => {
   const itemHolder = getDomElement('div', '', item.id, '', 'inventory-item');
   itemHolder.appendChild(getDomElement('img', '', '', item.src, 'inventory-item-picture'));
   itemHolder.appendChild(getDomElement('div', item.name, '', '', 'inventory-item-name'));
@@ -17,4 +17,4 @@ const getItemInDom = (item) => {
   });
 };
 
-export { getItemInDom };
+export { setItem };
