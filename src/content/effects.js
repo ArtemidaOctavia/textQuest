@@ -14,25 +14,24 @@ import { items } from './items';
 import { getSkillInDom } from '../utility/getSkillInDom';
 import { resetStatus } from '../utility/resetStatus';
 import { initialStatus } from './initialStatus';
+import { changeLocation } from '../utility/changeLocation';
+import { cutInventory } from '../utility/cutInventory';
 
 const effects = {
-  getItem: ([[min, max], specificItem]) => {
-    const quantity = min + Math.random() * (max + 1 - min);
-    for (let i = 1; i <= quantity; i += 1) {
-      let item = getRandomKey(items);
-      while (item.specific) {
-        item = getRandomKey(items);
+  getItems: ({ ...payload }) => {
+    Object.entries(payload).forEach(([key, value]) => {
+      let quantity = value;
+      if (Array.isArray(value)) {
+        quantity = value[0] + Math.random() * (value[1] + 1 - value[0]);
       }
-      if (specificItem) {
-        item = items[specificItem];
+      for (let i = 1; i <= quantity; i += 1) {
+        let item = items[key];
+        if (key === 'randomItem') { item = getRandomKey(items); }
+        playerStatus.inventory.push(item.name);
+        setItem(item);
+        cutInventory();
       }
-      playerStatus.inventory.push(item.name);
-      setItem(item);
-      while (playerStatus.inventory.length > 15) {
-        playerStatus.inventory.pop();
-        inventoryHolder.removeChild(inventoryHolder.lastChild);
-      }
-    }
+    });
   },
   takeAwayItems: (itemsForTake) => {
     itemsForTake.forEach(({ name, id }) => {
@@ -43,11 +42,14 @@ const effects = {
   },
   moveTo: (id) => {
     renderScene(id);
+    changeLocation(id);
   },
   changeNeeds: ({
     ...needs
   }) => {
-    Object.entries(needs).forEach(([key, value]) => { playerStatus[key] += value; });
+    Object.entries(needs).forEach(([key, value]) => {
+      playerStatus[key] += value;
+    });
     if (playerStatus.health >= initialStatus.health) {
       playerStatus.health = initialStatus.health;
     }
@@ -72,7 +74,7 @@ const effects = {
     killChildren(skillsHolder);
     renderScene('woodScene');
     changeStatusIndicators();
-    effects.getItem([[1, 1]]);
+    effects.getItems({ randomItem: 1 });
     effects.getSkill('findRiver');
   },
   backToMainMenu: () => {
