@@ -8,4 +8,11 @@ const playerStatus = {
   location: '',
 };
 
-export { playerStatus };
+const statusLethalValues = {
+  health: 0,
+  fatigue: 15,
+  hunger: 15,
+  thirst: 10,
+};
+
+export { playerStatus, statusLethalValues };

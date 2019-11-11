@@ -16,20 +16,20 @@ const scenes = {
         actionDescription: 'Идти вперёд',
         effects: [
           { type: 'moveForward', payload: 'randomDirection' },
-          { type: 'changeNeeds', payload: [0, 1, 1, 1] },
+          { type: 'changeNeeds', payload: { fatigue: 1, thirst: 1, hunger: 1 } },
         ],
       },
       rest: {
         actionDescription: 'Отдохнуть',
         effects: [
-          { type: 'changeNeeds', payload: [0, -4, 1, 1] },
+          { type: 'changeNeeds', payload: { fatigue: -4, thirst: 1, hunger: 1 } },
         ],
       },
       search: {
         actionDescription: 'Порыскать по кустам',
         effects: [
-          { type: 'changeNeeds', payload: [0, 3, 0, 2] },
-          { type: 'getItem', payload: [1] },
+          { type: 'changeNeeds', payload: { fatigue: 2, thirst: 2, hunger: 1 } },
+          { type: 'getItem', payload: [[1, 1]] },
         ],
       },
     },
@@ -45,20 +45,20 @@ const scenes = {
         actionDescription: 'Идти вперёд',
         effects: [
           { type: 'moveForward', payload: 'randomDirection' },
-          { type: 'changeNeeds', payload: [0, 1, 1, 1] },
+          { type: 'changeNeeds', payload: { fatigue: 1, thirst: 1, hunger: 1 } },
         ],
       },
       rest: {
         actionDescription: 'Отдохнуть',
         effects: [
-          { type: 'changeNeeds', payload: [0, -4, 1, 1] },
+          { type: 'changeNeeds', payload: { fatigue: -4, thirst: 1, hunger: 1 } },
         ],
       },
       search: {
         actionDescription: 'Поискать по огородам',
         effects: [
-          { type: 'changeNeeds', payload: [0, 1, 1, 1] },
-          { type: 'getItem', payload: [3] },
+          { type: 'changeNeeds', payload: { fatigue: 1, thirst: 1, hunger: 1 } },
+          { type: 'getItem', payload: [[1, 3]] },
         ],
       },
     },
@@ -85,20 +85,20 @@ const scenes = {
         actionDescription: 'Идти вперёд',
         effects: [
           { type: 'moveForward', payload: 'randomDirection' },
-          { type: 'changeNeeds', payload: [0, 1, 1, 1] },
+          { type: 'changeNeeds', payload: { fatigue: 1, thirst: 1, hunger: 1 } },
 
         ],
       },
       rest: {
         actionDescription: 'Отдохнуть',
         effects: [
-          { type: 'changeNeeds', payload: [0, -4, 1, 1] },
+          { type: 'changeNeeds', payload: { fatigue: -4, thirst: 1, hunger: 1 } },
         ],
       },
       search: {
         actionDescription: 'Напиться воды',
         effects: [
-          { type: 'changeNeeds', payload: [0, 1, 1, -15] },
+          { type: 'changeNeeds', payload: { fatigue: 1, hunger: 1, thirst: -15 } },
         ],
       },
     },
@@ -117,14 +117,14 @@ const scenes = {
       newGame: {
         actionDescription: 'Новая игра',
         effects: [
-          { type: 'startNewGame'},
+          { type: 'startNewGame' },
         ],
       },
       menu: {
         actionDescription: 'Главное меню',
         effects: [
-          { type: 'backToMainMenu'},
-          { type: 'startNewGame'},
+          { type: 'backToMainMenu' },
+          { type: 'startNewGame' },
         ],
       },
     },

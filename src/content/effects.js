@@ -8,24 +8,26 @@ import { getRandomDirection } from '../utility/getRandomDirection';
 import {
   inventoryHolder, menu, gameplayUI, skillsHolder,
 } from '../utility/domElements';
-import { getItemInDom } from '../utility/getItemInDom';
+import { setItem } from '../utility/setItem';
 import { getRandomKey } from '../utility/getRandomKey';
 import { items } from './items';
 import { getSkillInDom } from '../utility/getSkillInDom';
 import { resetStatus } from '../utility/resetStatus';
+import { initialStatus } from './initialStatus';
 
 const effects = {
-  getItem: ([quantity, specificItem]) => {
+  getItem: ([[min, max], specificItem]) => {
+    const quantity = min + Math.random() * (max + 1 - min);
     for (let i = 1; i <= quantity; i += 1) {
       let item = getRandomKey(items);
-      while (item.cannotBeAttainedRandomly) {
+      while (item.specific) {
         item = getRandomKey(items);
       }
       if (specificItem) {
         item = items[specificItem];
       }
       playerStatus.inventory.push(item.name);
-      getItemInDom(item);
+      setItem(item);
       while (playerStatus.inventory.length > 15) {
         playerStatus.inventory.pop();
         inventoryHolder.removeChild(inventoryHolder.lastChild);
@@ -42,22 +44,21 @@ const effects = {
   moveTo: (id) => {
     renderScene(id);
   },
-  changeNeeds: ([health, fatigue, hunger, thirst]) => {
-    playerStatus.health += health;
-    playerStatus.fatigue += fatigue;
-    playerStatus.hunger += hunger;
-    playerStatus.thirst += thirst;
-    if (playerStatus.health >= 100) {
-      playerStatus.health = 100;
+  changeNeeds: ({
+    ...needs
+  }) => {
+    Object.entries(needs).forEach(([key, value]) => { playerStatus[key] += value; });
+    if (playerStatus.health >= initialStatus.health) {
+      playerStatus.health = initialStatus.health;
     }
-    if (playerStatus.fatigue <= 0) {
-      playerStatus.fatigue = 0;
+    if (playerStatus.fatigue <= initialStatus.fatigue) {
+      playerStatus.fatigue = initialStatus.fatigue;
     }
-    if (playerStatus.hunger <= 0) {
-      playerStatus.hunger = 0;
+    if (playerStatus.hunger <= initialStatus.hunger) {
+      playerStatus.hunger = initialStatus.hunger;
     }
-    if (playerStatus.thirst <= 0) {
-      playerStatus.thirst = 0;
+    if (playerStatus.thirst <= initialStatus.thirst) {
+      playerStatus.thirst = initialStatus.thirst;
     }
     changeStatusIndicators();
     killPlayerIfExhausted();
@@ -71,7 +72,7 @@ const effects = {
     killChildren(skillsHolder);
     renderScene('woodScene');
     changeStatusIndicators();
-    effects.getItem([1]);
+    effects.getItem([[1, 1]]);
     effects.getSkill('findRiver');
   },
   backToMainMenu: () => {

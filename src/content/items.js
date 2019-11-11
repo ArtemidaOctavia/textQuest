@@ -5,7 +5,7 @@ const items = {
     src: 'https://i.ibb.co/K7D7Jjn/apple.jpg',
     consumable: true,
     effects: {
-      changeNeeds: [0, 0, -2, 0],
+      changeNeeds: { hunger: -2 },
     },
   },
   food: {
@@ -14,7 +14,7 @@ const items = {
     src: 'https://i.ibb.co/H7bqV3R/food.jpg',
     consumable: true,
     effects: {
-      changeNeeds: [0, 0, -2, 0],
+      changeNeeds: { hunger: -2 },
     },
   },
   mushroom: {
@@ -23,7 +23,7 @@ const items = {
     src: 'https://i.ibb.co/1LZgZbn/mushroom.jpg',
     consumable: true,
     effects: {
-      changeNeeds: [0, 0, -2, 0],
+      changeNeeds: { hunger: -2 },
     },
   },
   hazelnut: {
@@ -32,17 +32,17 @@ const items = {
     src: 'https://i.ibb.co/b3jmR3k/hazelnut.jpg',
     consumable: true,
     effects: {
-      changeNeeds: [0, 0, -2, 0],
+      changeNeeds: { hunger: -2 },
     },
   },
   fullBottle: {
     name: 'Полная бутылка',
     id: 'fullBottle',
     src: 'https://i.ibb.co/NV2zCNr/full-Bottle.jpg',
-    cannotBeAttainedRandomly: true,
+    specific: true,
     consumable: true,
     effects: {
-      changeNeeds: [0, -1, 0, -2],
+      changeNeeds: { fatigue: -1, thirst: -2 },
     },
   },
   emptyBottle: {
@@ -51,9 +51,29 @@ const items = {
     src: 'https://i.ibb.co/pvKYzJR/empty-Bottle.jpg',
     consumable: true,
     effects: {
-      getItem: [1, 'fullBottle'],
-      changeNeeds: [0, 2, 0, 1],
+      getItem: [[1, 1], 'fullBottle'],
+      changeNeeds: { fatigue: 2, thirst: 1 },
+    },
+  },
+  roach: {
+    name: 'Плотва',
+    id: 'roach',
+    src: 'http://www.fishinginireland.info/images/coarse/roach.jpg',
+    consumable: true,
+    specific: true,
+    effects: {
+      changeNeeds: { hunger: -2 },
+    },
+  },
+  fishingRod: {
+    name: 'Удочка',
+    id: 'fishingRod',
+    src: 'https://i5.walmartimages.com/asr/30881e20-ce61-4778-a949-39b088fd6009_1.497868596fdf88bc6936ff4c19b3cfee.jpeg',
+    effects: {
+      getItem: [[1, 2], 'roach'],
+      changeNeeds: { fatigue: 2, thirst: 1, hunger: 1 },
     },
   },
 };
+
 export { items };
