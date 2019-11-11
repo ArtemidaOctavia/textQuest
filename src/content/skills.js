@@ -4,7 +4,7 @@ const skills = {
     src: 'https://i.ibb.co/YyV7ZfD/compass.jpg',
     effects: {
       moveTo: 'riverScene',
-      changeNeeds: [0, 1, 1, 1],
+      changeNeeds: {hunger: 1, thirst: 1, fatigue: 1},
     },
   },
 };

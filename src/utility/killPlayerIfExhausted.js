@@ -1,4 +1,4 @@
-import {playerStatus, statusLethalValues} from '../content/playerStatus';
+import { playerStatus, statusLethalValues } from '../content/playerStatus';
 import { renderScene } from './renderScene';
 
 const killPlayerIfExhausted = () => {

@@ -20,7 +20,7 @@ const effects = {
     const quantity = min + Math.random() * (max + 1 - min);
     for (let i = 1; i <= quantity; i += 1) {
       let item = getRandomKey(items);
-      while (item.cannotBeAttainedRandomly) {
+      while (item.specific) {
         item = getRandomKey(items);
       }
       if (specificItem) {
@@ -44,11 +44,10 @@ const effects = {
   moveTo: (id) => {
     renderScene(id);
   },
-  changeNeeds: ([health, fatigue, hunger, thirst]) => {
-    playerStatus.health += health;
-    playerStatus.fatigue += fatigue;
-    playerStatus.hunger += hunger;
-    playerStatus.thirst += thirst;
+  changeNeeds: ({
+    ...needs
+  }) => {
+    Object.entries(needs).forEach(([key, value]) => { playerStatus[key] += value; });
     if (playerStatus.health >= initialStatus.health) {
       playerStatus.health = initialStatus.health;
     }
