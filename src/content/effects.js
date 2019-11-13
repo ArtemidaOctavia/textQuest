@@ -57,9 +57,6 @@ const effects = {
   }) => {
     Object.entries(needs).forEach(([key, value]) => {
       playerStatus[key] += value;
-      // playerStatus[key] = Math.max(playerStatus[key], minPlayerStatusValues[key]);
-      // todo: create function getInBounds(value, { min = 0, max })
-      // todo: store min-max as { health: { max: 100 } }
     });
     playerStatus.health = playerStatus.health >= statusMinValues.health
       ? statusMinValues.health

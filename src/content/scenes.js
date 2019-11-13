@@ -11,7 +11,6 @@ const scenes = {
         + 'принадлежит тропическим лесам. Площади, занятые деревьями с сомкнутостью крон менее 0,2—0,3, считаются '
         + 'редколесьем.',
     image: 'https://i.ibb.co/mD7WjyV/wood.jpg',
-    items: ['hazelnut', 'mushroom'],
     actions: {
       forward: {
         actionDescription: 'Идти вперёд',
