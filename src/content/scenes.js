@@ -59,7 +59,7 @@ const scenes = {
         actionDescription: 'Поискать по огородам',
         effects: [
           { type: 'changeNeeds', payload: { fatigue: 1, thirst: 1, hunger: 1 } },
-          { type: 'getItems', payload: { fishingRod: [0, 1], food: [0, 3], emptyBottle: [0, 1] } },
+          { type: 'getItems', payload: { fishingRod: [0, 1], food: [0, 2], emptyBottle: [0, 1] } },
         ],
       },
     },
