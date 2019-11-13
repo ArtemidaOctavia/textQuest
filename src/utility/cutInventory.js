@@ -1,8 +1,8 @@
 import { inventoryHolder } from './domElements';
-import { playerStatus } from '../content/playerStatus';
+import {inventoryCapacity, playerStatus} from '../content/playerStatus';
 
 const cutInventory = () => {
-  while (playerStatus.inventory.length > 15) {
+  while (playerStatus.inventory.length > inventoryCapacity) {
     playerStatus.inventory.pop();
     inventoryHolder.removeChild(inventoryHolder.lastChild);
   }

@@ -8,6 +8,8 @@ const playerStatus = {
   location: '',
 };
 
+const inventoryCapacity = 15;
+
 const statusLethalValues = {
   health: 0,
   fatigue: 15,
@@ -22,4 +24,6 @@ const statusMinValues = {
   thirst: 0,
 };
 
-export { playerStatus, statusLethalValues, statusMinValues };
+export {
+  playerStatus, statusLethalValues, statusMinValues, inventoryCapacity,
+};
