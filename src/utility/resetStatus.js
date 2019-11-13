@@ -7,4 +7,4 @@ const resetStatus = () => {
   });
 };
 
-export {resetStatus}
+export { resetStatus };

@@ -15,4 +15,11 @@ const statusLethalValues = {
   thirst: 10,
 };
 
-export { playerStatus, statusLethalValues };
+const statusMinValues = {
+  health: 100,
+  fatigue: 0,
+  hunger: 0,
+  thirst: 0,
+};
+
+export { playerStatus, statusLethalValues, statusMinValues };

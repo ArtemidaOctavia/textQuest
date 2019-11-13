@@ -43,6 +43,7 @@ const items = {
     consumable: true,
     effects: {
       changeNeeds: { fatigue: -1, thirst: -2 },
+      getItem: { emptyBottle: 1 },
     },
   },
   emptyBottle: {
