@@ -2,12 +2,11 @@ import { playerStatus, statusLethalValues } from '../content/playerStatus';
 import { renderScene } from './renderScene';
 
 const killPlayerIfExhausted = () => {
-  if (playerStatus.damage >= statusLethalValues.damage
-        || playerStatus.fatigue >= statusLethalValues.fatigue
-        || playerStatus.hunger >= statusLethalValues.hunger
-        || playerStatus.thirst >= statusLethalValues.thirst) {
-    renderScene('youDiedScene');
-  }
+  Object.keys(playerStatus).forEach((key) => {
+    playerStatus[key] >= statusLethalValues[key]
+      ? renderScene('youDiedScene')
+      : false;
+  });
 };
 
 export { killPlayerIfExhausted };
