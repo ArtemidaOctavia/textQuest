@@ -3,8 +3,9 @@ import { initialStatus } from '../content/initialStatus';
 
 const resetStatus = () => {
   Object.keys(playerStatus).forEach((param) => {
-    Array.isArray(playerStatus[param]) ? playerStatus[param] = []
-      : playerStatus[param] = initialStatus[param];
+    playerStatus[param] = Array.isArray(playerStatus[param])
+      ? []
+      : initialStatus[param];
   });
 };
 
