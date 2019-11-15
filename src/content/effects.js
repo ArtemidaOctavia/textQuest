@@ -16,6 +16,7 @@ import { resetStatus } from '../utility/resetStatus';
 import { changeLocation } from '../utility/changeLocation';
 import { cropInventory } from '../utility/cropInventory';
 import { getRandomNumberBetweenTwo } from '../utility/getRandomNumberBetweenTwo';
+import {inventoryCounter} from "../utility/inventoryCounter";
 
 
 const effects = {
@@ -32,6 +33,7 @@ const effects = {
 
         playerStatus.inventory.push(item.name);
         setItem(item);
+        inventoryCounter();
         cropInventory();
       }
     });
