@@ -1,6 +1,7 @@
 import { getDomElement } from './getDomElement';
 import { effects } from '../content/effects';
 import { inventoryHolder } from './domElements';
+import { inventoryCounter } from './inventoryCounter';
 
 const setItem = (item) => {
   const itemHolder = getDomElement('div', '', item.id, '', 'inventory-item');
@@ -13,6 +14,7 @@ const setItem = (item) => {
     });
     if (item.consumable) {
       effects.takeAwayItems([item]);
+      inventoryCounter();
     }
   });
 };
