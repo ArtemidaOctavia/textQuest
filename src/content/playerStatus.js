@@ -1,7 +1,7 @@
 const playerStatus = {
   inventory: [],
   skills: [],
-  health: 100, // max 100
+  damage: 0, // max 100
   fatigue: 0, // max 15
   hunger: 0, // max 15
   thirst: 0, // max 10
@@ -11,14 +11,14 @@ const playerStatus = {
 const inventoryCapacity = 15;
 
 const statusLethalValues = {
-  health: 0,
+  damage: 100,
   fatigue: 15,
   hunger: 15,
   thirst: 10,
 };
 
 const statusMinValues = {
-  health: 100,
+  damage: 0,
   fatigue: 0,
   hunger: 0,
   thirst: 0,

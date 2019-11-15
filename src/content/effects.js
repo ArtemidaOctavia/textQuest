@@ -14,7 +14,7 @@ import { items } from './items';
 import { setSkill } from '../utility/setSkill';
 import { resetStatus } from '../utility/resetStatus';
 import { changeLocation } from '../utility/changeLocation';
-import { cutInventory } from '../utility/cutInventory';
+import { cropInventory } from '../utility/cropInventory';
 import { getRandomNumberBetweenTwo } from '../utility/getRandomNumberBetweenTwo';
 
 
@@ -32,7 +32,7 @@ const effects = {
 
         playerStatus.inventory.push(item.name);
         setItem(item);
-        cutInventory();
+        cropInventory();
       }
     });
   },
@@ -57,22 +57,10 @@ const effects = {
   }) => {
     Object.entries(needs).forEach(([key, value]) => {
       playerStatus[key] += value;
+      playerStatus[key] = playerStatus[key] <= statusMinValues[key]
+        ? statusMinValues[key]
+        : playerStatus[key];
     });
-    playerStatus.health = playerStatus.health >= statusMinValues.health
-      ? statusMinValues.health
-      : playerStatus.health;
-
-    playerStatus.fatigue = playerStatus.fatigue <= statusMinValues.fatigue
-      ? statusMinValues.fatigue
-      : playerStatus.fatigue;
-
-    playerStatus.hunger = playerStatus.hunger <= statusMinValues.hunger
-      ? statusMinValues.hunger
-      : playerStatus.hunger;
-
-    playerStatus.thirst = playerStatus.thirst <= statusMinValues.thirst
-      ? statusMinValues.thirst
-      : playerStatus.thirst;
     changeStatusIndicators();
     killPlayerIfExhausted();
   },
