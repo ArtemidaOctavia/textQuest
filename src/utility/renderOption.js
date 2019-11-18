@@ -1,6 +1,6 @@
 import { getDomElement } from './getDomElement';
 import { options } from './domElements';
-import { effects } from '../content/effects';
+import {effects} from '../content/effects';
 
 const renderOption = (action) => {
   const option = getDomElement('li', action.actionDescription);

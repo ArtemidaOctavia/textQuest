@@ -1,4 +1,4 @@
-import { playerStatus } from './playerStatus';
+import { playerStatus, statusMinValues } from './playerStatus';
 import { skills } from './skills';
 import { killChildren } from '../utility/killChildren';
 import { renderScene } from '../utility/renderScene';
@@ -11,55 +11,58 @@ import {
 import { setItem } from '../utility/setItem';
 import { getRandomKey } from '../utility/getRandomKey';
 import { items } from './items';
-import { getSkillInDom } from '../utility/getSkillInDom';
+import { setSkill } from '../utility/setSkill';
 import { resetStatus } from '../utility/resetStatus';
-import { initialStatus } from './initialStatus';
+import { changeLocation } from '../utility/changeLocation';
+import { cropInventory } from '../utility/cropInventory';
+import { getRandomNumberBetweenTwo } from '../utility/getRandomNumberBetweenTwo';
+import {inventoryCounter} from "../utility/inventoryCounter";
+
 
 const effects = {
-  getItem: ([[min, max], specificItem]) => {
-    const quantity = min + Math.random() * (max + 1 - min);
-    for (let i = 1; i <= quantity; i += 1) {
-      let item = getRandomKey(items);
-      while (item.specific) {
-        item = getRandomKey(items);
+  getItems: ({ ...payload }) => {
+    Object.entries(payload).forEach(([key, value]) => {
+      const quantity = Array.isArray(value)
+        ? getRandomNumberBetweenTwo(...value)
+        : value;
+
+      for (let i = 1; i <= quantity; i += 1) {
+        const item = key === 'randomItem' // todo: use item groups like 'fish' for generic fish item
+          ? getRandomKey(items)
+          : items[key];
+
+        playerStatus.inventory.push(item.name);
+        setItem(item);
+        inventoryCounter();
+        cropInventory();
       }
-      if (specificItem) {
-        item = items[specificItem];
-      }
-      playerStatus.inventory.push(item.name);
-      setItem(item);
-      while (playerStatus.inventory.length > 15) {
-        playerStatus.inventory.pop();
-        inventoryHolder.removeChild(inventoryHolder.lastChild);
-      }
-    }
+    });
   },
+
   takeAwayItems: (itemsForTake) => {
     itemsForTake.forEach(({ name, id }) => {
       const itemIndex = playerStatus.inventory.indexOf(name);
+
       playerStatus.inventory.splice(itemIndex, 1);
+
       document.getElementById(id).remove();
     });
   },
+
   moveTo: (id) => {
     renderScene(id);
+    changeLocation(id);
   },
+
   changeNeeds: ({
     ...needs
   }) => {
-    Object.entries(needs).forEach(([key, value]) => { playerStatus[key] += value; });
-    if (playerStatus.health >= initialStatus.health) {
-      playerStatus.health = initialStatus.health;
-    }
-    if (playerStatus.fatigue <= initialStatus.fatigue) {
-      playerStatus.fatigue = initialStatus.fatigue;
-    }
-    if (playerStatus.hunger <= initialStatus.hunger) {
-      playerStatus.hunger = initialStatus.hunger;
-    }
-    if (playerStatus.thirst <= initialStatus.thirst) {
-      playerStatus.thirst = initialStatus.thirst;
-    }
+    Object.entries(needs).forEach(([key, value]) => {
+      playerStatus[key] += value;
+      playerStatus[key] = playerStatus[key] <= statusMinValues[key]
+        ? statusMinValues[key]
+        : playerStatus[key];
+    });
     changeStatusIndicators();
     killPlayerIfExhausted();
   },
@@ -72,7 +75,7 @@ const effects = {
     killChildren(skillsHolder);
     renderScene('woodScene');
     changeStatusIndicators();
-    effects.getItem([[1, 1]]);
+    effects.getItems({ randomItem: 1 });
     effects.getSkill('findRiver');
   },
   backToMainMenu: () => {
@@ -82,7 +85,7 @@ const effects = {
   getSkill: (skill) => {
     const target = skills[skill];
     playerStatus.skills.push(target.name);
-    getSkillInDom(target);
+    setSkill(target);
   },
 };
 

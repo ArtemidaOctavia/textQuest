@@ -1,7 +1,7 @@
 const paramsMap = {
-  health: [
+  damage: [
     {
-      threshold: 25,
+      threshold: 75,
       label: 'при смерти',
       colorIndicator: 'red',
     },
@@ -11,12 +11,12 @@ const paramsMap = {
       colorIndicator: 'orange',
     },
     {
-      threshold: 75,
+      threshold: 25,
       label: 'подбит',
       colorIndicator: 'yellow',
     },
     {
-      threshold: 100,
+      threshold: 0,
       label: 'здоров',
       colorIndicator: 'green',
     },

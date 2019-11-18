@@ -29,7 +29,7 @@ const scenes = {
         actionDescription: 'Порыскать по кустам',
         effects: [
           { type: 'changeNeeds', payload: { fatigue: 2, thirst: 2, hunger: 1 } },
-          { type: 'getItem', payload: [[1, 1]] },
+          { type: 'getItems', payload: { hazelnut: [0, 2], mushroom: [0, 1] } },
         ],
       },
     },
@@ -58,7 +58,7 @@ const scenes = {
         actionDescription: 'Поискать по огородам',
         effects: [
           { type: 'changeNeeds', payload: { fatigue: 1, thirst: 1, hunger: 1 } },
-          { type: 'getItem', payload: [[1, 3]] },
+          { type: 'getItems', payload: { fishingRod: [0, 1], food: [0, 2], emptyBottle: [0, 1] } },
         ],
       },
     },

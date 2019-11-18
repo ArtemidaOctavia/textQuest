@@ -4,7 +4,6 @@ import { renderPicture } from './renderPicture';
 import { killChildren } from './killChildren';
 import { description, options } from './domElements';
 
-
 const renderScene = (id) => {
   const scene = scenes[id];
   description.textContent = scene.description;

@@ -8,7 +8,7 @@ const aboutProject = document.querySelector('.about-project');
 const menuButtons = document.querySelector('.menu-buttons');
 const projectInformation = document.querySelector('.project-information');
 const backButton = document.querySelector('.backToMenu');
-const health = document.querySelector('.health');
+const damage = document.querySelector('.damage');
 const fatigue = document.querySelector('.fatigue');
 const hunger = document.querySelector('.hunger');
 const thirst = document.querySelector('.thirst');
@@ -21,7 +21,7 @@ const skillsHolder = document.querySelector('.skills-holder');
 export {
   description, options, picture, newGame, menu, gameplayUI, aboutProject,
   menuButtons, projectInformation,
-  backButton, health, fatigue, hunger, thirst, inventoryButton,
+  backButton, damage, fatigue, hunger, thirst, inventoryButton,
   skillsButton, descriptionHolder, inventoryHolder,
   skillsHolder,
 };

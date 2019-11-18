@@ -1,11 +1,11 @@
 import { changeStatusIndicator } from './changeStatusIndicator';
 import {
-  health, fatigue, thirst, hunger,
+  damage, fatigue, thirst, hunger,
 } from './domElements';
 
 
 const changeStatusIndicators = () => {
-  changeStatusIndicator('health', health);
+  changeStatusIndicator('damage', damage);
   changeStatusIndicator('fatigue', fatigue);
   changeStatusIndicator('thirst', thirst);
   changeStatusIndicator('hunger', hunger);
