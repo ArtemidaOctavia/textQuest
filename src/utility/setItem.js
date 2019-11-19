@@ -5,10 +5,16 @@ import { inventoryCounter } from './inventoryCounter';
 
 const setItem = (item) => {
   const itemHolder = getDomElement('div', '', item.id, '', 'inventory-item');
-  itemHolder.appendChild(getDomElement('img', '', '', item.src, 'inventory-item-picture'));
+  const cross = getDomElement('div', 'X', '', '', 'inventory-item-cross');
+  cross.addEventListener('click', () => {
+    document.getElementById(item.id).remove();
+  });
+  itemHolder.appendChild(cross);
+  const img = getDomElement('img', '', '', item.src, 'inventory-item-picture');
+  itemHolder.appendChild(img);
   itemHolder.appendChild(getDomElement('div', item.name, '', '', 'inventory-item-name'));
   inventoryHolder.appendChild(itemHolder);
-  itemHolder.addEventListener('click', () => {
+  img.addEventListener('click', () => {
     Object.keys(item.effects).forEach((effect) => {
       effects[effect](item.effects[effect]);
     });

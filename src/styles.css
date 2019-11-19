@@ -44,9 +44,19 @@ body {
 }
 
 .inventory-item:hover {
-    cursor: pointer;
     color: gray;
     border-color: gray;
+}
+
+.inventory-item-cross {
+    background-color: darkgray;
+    width: 12px;
+    height: 15px;
+    margin: 2px;
+}
+
+.inventory-item-cross:hover {
+    cursor: pointer;
 }
 
 .inventory-item-name {
@@ -59,6 +69,10 @@ body {
     text-align: center;
 }
 
+.inventory-item-picture:hover {
+    cursor: pointer;
+}
+
 .backToMenu {
     background-color: darkgray;
     float: left;
@@ -69,8 +83,8 @@ body {
 
 .backToMenu:hover {
     text-decoration: underline;
-    cursor: pointer;
     color: gray;
+    cursor: pointer;
 }
 
 .menu {
