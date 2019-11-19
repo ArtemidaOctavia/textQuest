@@ -7,7 +7,7 @@ const setItem = (item) => {
   const itemHolder = getDomElement('div', '', item.id, '', 'inventory-item');
   const cross = getDomElement('div', 'X', '', '', 'inventory-item-cross');
   cross.addEventListener('click', () => {
-    document.getElementById(item.id).remove();
+    effects.takeAwayItems([item]);
   });
   itemHolder.appendChild(cross);
   const img = getDomElement('img', '', '', item.src, 'inventory-item-picture');

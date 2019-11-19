@@ -44,7 +44,7 @@ const effects = {
       const itemIndex = playerStatus.inventory.indexOf(name);
 
       playerStatus.inventory.splice(itemIndex, 1);
-
+      inventoryCounter();
       document.getElementById(id).remove();
     });
   },
