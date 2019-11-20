@@ -122,7 +122,6 @@ body {
 }
 
 .left-side-holder {
-    position: absolute;
     display: inline-block;
 
     height: 99%;
@@ -133,10 +132,7 @@ body {
 }
 
 .right-side-holder {
-    left: 47%;
-    position: absolute;
     display: inline-block;
-
     height: 99%;
     width: 51%;
     margin-left: 5px;
