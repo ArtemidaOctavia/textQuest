@@ -73,7 +73,7 @@ const effects = {
     resetStatus();
     killChildren(inventoryHolder);
     killChildren(skillsHolder);
-    renderScene('woodScene');
+    renderScene('gardenScene');
     changeStatusIndicators();
     effects.getItems({ randomItem: 1 });
     effects.getSkill('findRiver');

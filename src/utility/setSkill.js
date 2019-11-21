@@ -3,9 +3,9 @@ import { getDomElement } from './getDomElement';
 import { effects } from '../content/effects';
 
 const setSkill = (skill) => {
-  const skillHolder = getDomElement('div', '', '', '', 'inventory-item');
-  skillHolder.appendChild(getDomElement('img', '', '', skill.src, 'inventory-item-picture'));
-  skillHolder.appendChild(getDomElement('div', skill.name, '', '', 'inventory-item-name'));
+  const skillHolder = getDomElement('div', '', '', '', 'game-holder__inventory-item');
+  skillHolder.appendChild(getDomElement('img', '', '', skill.src, 'game-holder__inventory-item-picture'));
+  skillHolder.appendChild(getDomElement('div', skill.name, '', '', 'game-holder__inventory-item-name'));
   skillHolder.addEventListener('click', () => {
     Object.keys(skill.effects).forEach((effect) => {
       effects[effect](skill.effects[effect]);

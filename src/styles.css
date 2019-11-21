@@ -6,83 +6,74 @@ body {
     background-color: lightgray;
 }
 
-.inventory-holder {
-    height: 58%;
+.game-holder__inventory-holder {
+    height: 69%;
     width: 95%;
-    display: inline-block;
-    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
     margin-left: 5px;
     margin-bottom: 5px;
     margin-top: 5px;
 }
 
-.skills-holder {
-    height: 58%;
+.game-holder__skills-holder {
+    height: 69%;
     width: 95%;
     display: inline-block;
-    border: 1px solid black;
     margin-left: 5px;
     margin-bottom: 5px;
     margin-top: 5px;
 }
 
-.skills-holder {
-    height: 58%;
-    width: 95%;
-    display: inline-block;
-    border: 1px solid black;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
-.inventory-item {
-    display: inline-block;
+.game-holder__inventory-item {
+    display: block;
     width: 15%;
-    margin: 10px;
+    height: 15%;
+    margin: 5px;
     border: 3px solid black;
     background-color: white;
+    /*padding: 0 5px 60px;*/
 }
 
-.inventory-item:hover {
+.game-holder__inventory-item:hover {
     color: gray;
     border-color: gray;
 }
 
-.inventory-item-cross {
+.game-holder__inventory-item-cross {
     background-color: darkgray;
     width: 12px;
     height: 15px;
     margin: 2px;
 }
 
-.inventory-item-cross:hover {
+.game-holder__inventory-item-cross:hover {
     cursor: pointer;
 }
 
-.inventory-item-name {
+.game-holder__inventory-item-name {
     text-align: center;
 }
 
-.inventory-item-picture {
+.game-holder__inventory-item-picture {
     width: 100%;
-    max-height: 90px;
+    height: 100%;
     text-align: center;
 }
 
-.inventory-item-picture:hover {
+.game-holder__inventory-item-picture:hover {
     cursor: pointer;
 }
 
-.backToMenu {
+.menu__backToMenu {
     background-color: darkgray;
-    float: left;
-    clear: both;
+    display: block;
     margin-bottom: 10px;
     padding: 5px;
 }
 
-.backToMenu:hover {
+.menu__backToMenu:hover {
     text-decoration: underline;
     color: gray;
     cursor: pointer;
@@ -91,37 +82,23 @@ body {
 .menu {
     height: 600px;
     width: 800px;
-    border: 1px solid black;
     background-color: lightgray;
+    display: flex;
 }
 
-.menu-buttons {
+.menu__menu-buttons {
     margin-top: 20%;
     margin-left: 40%;
 }
 
-.menu-button {
-    background-color: darkgray;
-    display: inline-block;
-    float: left;
-    clear: both;
-    margin-bottom: 30px;
-    padding: 10px;
-    font-size: 30px;
-}
-
-.menu-button:hover {
-    cursor: pointer;
-    color: gray;
-}
-
 .game-holder {
+    display: flex;
     height: 800px;
     width: 1220px;
     margin: 5px;
 }
 
-.left-side-holder {
+.game-holder__left-side-holder {
     display: inline-block;
 
     height: 99%;
@@ -131,7 +108,7 @@ body {
     margin-top: 5px;
 }
 
-.right-side-holder {
+.game-holder__right-side-holder {
     display: inline-block;
     height: 99%;
     width: 51%;
@@ -140,82 +117,103 @@ body {
     margin-top: 5px;
 }
 
-.description-holder {
-    height: 58%;
-    width: 95%;
-    display: inline-block;
-    border: 1px solid black;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
-.description {
-    padding: 10px;
-}
-
-.options-holder {
-    height: 37%;
-    width: 95%;
-    display: inline-block;
-    border: 1px solid black;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
-.illustration-holder {
+.game-holder__description-holder {
     height: 69%;
     width: 95%;
     display: inline-block;
-    border: 1px solid black;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    overflow-y:auto;
+}
+
+.game-holder__description {
+    padding: 10px;
+}
+
+.game-holder__options-holder {
+    height: 26%;
+    width: 95%;
+    display: flex;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.game-holder__illustration-holder {
+    height: 69%;
+    width: 95%;
+    display: inline-block;
     margin-left: 5px;
     margin-bottom: 5px;
     margin-top: 5px;
 }
 
 
-.status-holder {
+.game-holder__status-holder {
     height: 26%;
     width: 95%;
     display: inline-block;
     margin-left: 5px;
     margin-bottom: 5px;
     margin-top: 5px;
-    border: 1px solid black;
 }
 
-.options {
-
-}
-
-.option {
+.button {
     background-color: darkgray;
-    display: inline-block;
-    float: left;
-    clear: both;
-    margin-bottom: 10px;
     padding: 5px;
 }
 
-.option:hover {
+.menu__menu-button {
+    display: block;
+    clear: both;
+    margin-bottom: 30px;
+    padding: 10px;
+    font-size: 30px;
+}
+
+game-holder__inventory-button {
+
+}
+
+game-holder__skills-button {
+
+}
+
+.button:hover {
     text-decoration: underline;
     cursor: pointer;
     color: gray;
 }
 
-.image {
+.game-holder__description-title {
+    width: 300px;
+    font-size: 30px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+.game-holder__option {
+    background-color: darkgray;
+    display: block;
+    clear: both;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.game-holder__image {
     height: 100%;
     width: 100%;
 }
 
-.status-button {
+.game-holder__status-button {
     display: inline-block;
     clear: none;
     margin: 5px;
 }
 
-.indicator {
+.game-holder__indicator {
     display: block;
     clear: both;
     margin-left: 5px;
