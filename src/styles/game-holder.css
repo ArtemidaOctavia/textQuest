@@ -1,9 +1,8 @@
-html {
-    font-family: "Courier New";
-}
-
-body {
-    background: url("http://ilyakhasanov.ru/images/background/89.png") repeat;
+.game-holder {
+    display: flex;
+    height: 800px;
+    width: 1400px;
+    margin: 5px;
 }
 
 .game-holder__inventory-holder {
@@ -70,44 +69,6 @@ body {
     cursor: pointer;
 }
 
-.menu__back-button {
-    display: inline-block;
-}
-
-.menu__back-button:hover {
-    text-decoration: underline;
-    color: gray;
-    cursor: pointer;
-}
-
-.menu__project-information-holder {
-    display:flex;
-    align-items: start;
-    flex-direction: column;
-}
-
-.menu__project-information {
-    display: inline-block;
-}
-
-.menu {
-    height: 600px;
-    width: 800px;
-    display: flex;
-}
-
-.menu__menu-buttons {
-    margin-top: 20%;
-    margin-left: 40%;
-}
-
-.game-holder {
-    display: flex;
-    height: 800px;
-    width: 1400px;
-    margin: 5px;
-}
-
 .game-holder__left-side-holder {
     display: inline-block;
 
@@ -170,32 +131,6 @@ body {
     margin-top: 5px;
 }
 
-.button {
-    background-color: darkgray;
-    padding: 5px;
-    border-radius: 10px;
-    font-family: "Courier New";
-    font-weight: bold;
-}
-
-.button:active {
-    background-color: dimgrey;
-}
-
-.menu__menu-button {
-    display: block;
-    clear: both;
-    margin-bottom: 30px;
-    padding: 10px;
-    font-size: 30px;
-}
-
-.button:hover {
-    text-decoration: underline;
-    cursor: pointer;
-    color: gray;
-}
-
 .game-holder__description-title {
     width: 300px;
     font-size: 30px;
@@ -229,8 +164,4 @@ body {
     clear: both;
     margin-left: 5px;
     margin-top: 10px;
-}
-
-.hide {
-    display: none;
 }

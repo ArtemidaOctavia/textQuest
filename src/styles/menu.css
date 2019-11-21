@@ -1,0 +1,38 @@
+.menu {
+    height: 600px;
+    width: 800px;
+    display: flex;
+}
+
+.menu__back-button {
+    display: inline-block;
+}
+
+.menu__back-button:hover {
+    text-decoration: underline;
+    color: gray;
+    cursor: pointer;
+}
+
+.menu__project-information-holder {
+    display:flex;
+    align-items: start;
+    flex-direction: column;
+}
+
+.menu__project-information {
+    display: inline-block;
+}
+
+.menu__menu-buttons {
+    margin-top: 20%;
+    margin-left: 40%;
+}
+
+.menu__menu-button {
+    display: block;
+    clear: both;
+    margin-bottom: 30px;
+    padding: 10px;
+    font-size: 30px;
+}

@@ -1,4 +1,8 @@
-import './styles.css';
+import './styles/main.css';
+import './styles/button.css';
+import './styles/menu.css';
+import './styles/game-holder.css';
+
 import { isOpen } from './utility/isOpen';
 import { effects } from './content/effects';
 
