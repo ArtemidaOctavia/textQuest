@@ -10,11 +10,11 @@ const setItem = (item) => {
     effects.takeAwayItems([item]);
   });
   itemHolder.appendChild(cross);
-  const img = getDomElement('img', '', '', item.src, 'game-holder__inventory-item-picture');
-  itemHolder.appendChild(img);
-  itemHolder.appendChild(getDomElement('div', item.name, '', '', 'game-holder__inventory-item-name'));
+  itemHolder.appendChild(getDomElement('img', '', '', item.src, 'game-holder__inventory-item-picture'));
+  const itemName = getDomElement('div', item.name, '', '', 'game-holder__inventory-item-name');
+  itemHolder.appendChild(itemName);
   inventoryHolder.appendChild(itemHolder);
-  img.addEventListener('click', () => {
+  itemName.addEventListener('click', () => {
     Object.keys(item.effects).forEach((effect) => {
       effects[effect](item.effects[effect]);
     });
