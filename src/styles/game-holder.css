@@ -1,7 +1,7 @@
 .game-holder {
     display: flex;
     flex-wrap: wrap;
-    height: 900px;
+    height: 600px;
     width: 900px;
     margin: 5px;
 }
@@ -58,7 +58,7 @@
 .game-holder__inventory-item-name {
     text-align: center;
     font-weight: bold;
-    font-family: Candara;
+    font-family: Candara, serif, sans-serif, monospace;
 }
 
 .game-holder__inventory-item-picture {
@@ -83,11 +83,11 @@
 
 .game-holder__description {
     padding: 10px;
-    font-family: Candara;
+    font-family: Candara, serif, sans-serif, monospace;
 }
 
 .game-holder__options-holder {
-    height: 430px;
+    height: 230px;
     flex-basis: 430px;
     display: flex;
     justify-content: center;
@@ -107,7 +107,7 @@
 
 
 .game-holder__status-holder {
-    height: 430px;
+    height: 230px;
     flex-basis: 430px;
     display: inline-block;
     margin-left: 5px;
@@ -121,7 +121,7 @@
     margin: 0 auto;
     display: block;
     text-align: center;
-    font-family: Candara;
+    font-family: Candara, serif, sans-serif, monospace;
 }
 
 .game-holder__option {

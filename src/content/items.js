@@ -18,7 +18,7 @@ const items = {
     },
   },
   mushroom: {
-    name: 'Полезный грибочек',
+    name: 'Крутой гриб',
     id: 'mushroom',
     src: 'https://i.ibb.co/1LZgZbn/mushroom.jpg',
     consumable: true,

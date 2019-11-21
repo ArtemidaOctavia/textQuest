@@ -2,7 +2,7 @@
     background-color: darkgray;
     padding: 5px;
     border-radius: 10px;
-    font-family: "Courier New";
+    font-family: Courier, serif, sans-serif, monospace ;
     font-weight: bold;
 }
 
