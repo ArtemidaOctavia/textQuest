@@ -10,7 +10,7 @@ const setItem = (item) => {
     effects.takeAwayItems([item]);
   });
   itemHolder.appendChild(cross);
-  itemHolder.appendChild(getDomElement('img', '', '', item.src, 'game-holder__inventory-item-picture'));
+  itemHolder.appendChild(getDomElement('div', '', '', item.src, 'game-holder__inventory-item-picture'));
   const itemName = getDomElement('div', item.name, '', '', 'game-holder__inventory-item-name');
   itemHolder.appendChild(itemName);
   inventoryHolder.appendChild(itemHolder);

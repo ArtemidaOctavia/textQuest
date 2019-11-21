@@ -1,13 +1,14 @@
 .game-holder {
     display: flex;
-    height: 800px;
-    width: 1400px;
+    flex-wrap: wrap;
+    height: 900px;
+    width: 900px;
     margin: 5px;
 }
 
 .game-holder__inventory-holder {
-    height: 69%;
-    width: 95%;
+    height: 430px;
+    flex-basis: 430px;
     display: flex;
     flex-wrap: wrap;
     align-items: start;
@@ -17,17 +18,18 @@
 }
 
 .game-holder__skills-holder {
-    height: 69%;
-    width: 95%;
-    display: inline-block;
+    height: 430px;
+    flex-basis: 430px;
+    display: flex;
+    justify-content: left;
     margin-left: 5px;
     margin-bottom: 5px;
     margin-top: 5px;
 }
 
 .game-holder__inventory-item {
-    width: 15%;
-    height: 25%;
+    flex-basis: 70px;
+    height: 120px;
     margin: 5px;
     border: 3px solid black;
     background-color: white;
@@ -60,37 +62,18 @@
 }
 
 .game-holder__inventory-item-picture {
-    width: 100%;
-    height: 70%;
-    text-align: center;
+    width: 70px;
+    height: 70px;
+    background-size: contain;
 }
 
 .game-holder__inventory-item-name:hover {
     cursor: pointer;
 }
 
-.game-holder__left-side-holder {
-    display: inline-block;
-
-    height: 99%;
-    width: 46%;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
-.game-holder__right-side-holder {
-    display: inline-block;
-    height: 99%;
-    width: 51%;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
 .game-holder__description-holder {
-    height: 69%;
-    width: 95%;
+    height: 430px;
+    flex-basis: 430px;
     display: inline-block;
     margin-left: 5px;
     margin-bottom: 5px;
@@ -104,17 +87,18 @@
 }
 
 .game-holder__options-holder {
-    height: 26%;
-    width: 95%;
+    height: 430px;
+    flex-basis: 430px;
     display: flex;
+    justify-content: center;
     margin-left: 5px;
     margin-bottom: 5px;
     margin-top: 5px;
 }
 
 .game-holder__illustration-holder {
-    height: 69%;
-    width: 95%;
+    height: 430px;
+    flex-basis: 430px;
     display: inline-block;
     margin-left: 5px;
     margin-bottom: 5px;
@@ -123,8 +107,8 @@
 
 
 .game-holder__status-holder {
-    height: 26%;
-    width: 95%;
+    height: 430px;
+    flex-basis: 430px;
     display: inline-block;
     margin-left: 5px;
     margin-bottom: 5px;
@@ -149,8 +133,10 @@
 }
 
 .game-holder__image {
-    height: 100%;
-    width: 100%;
+    height: 430px;
+    width: 430px;
+    background-size: contain;
+    background: no-repeat;
 }
 
 .game-holder__status-button {
@@ -161,7 +147,6 @@
 
 .game-holder__indicator {
     display: block;
-    clear: both;
     margin-left: 5px;
     margin-top: 10px;
 }

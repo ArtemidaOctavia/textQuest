@@ -9,16 +9,16 @@ const items = {
     },
   },
   food: {
-    name: 'Вкуснейший супец',
+    name: 'Вкусный супец',
     id: 'food',
-    src: 'https://i.ibb.co/H7bqV3R/food.jpg',
+    src: 'https://gotovim-doma.ru/images/recipe/e/5d/e5dbd4fc4bc3fc3a070952b04d3183c7_l.jpg',
     consumable: true,
     effects: {
       changeNeeds: { hunger: -2 },
     },
   },
   mushroom: {
-    name: 'Съедобный грибочек',
+    name: 'Полезный грибочек',
     id: 'mushroom',
     src: 'https://i.ibb.co/1LZgZbn/mushroom.jpg',
     consumable: true,
@@ -29,7 +29,7 @@ const items = {
   hazelnut: {
     name: 'Лесной орешек',
     id: 'hazelnut',
-    src: 'https://i.ibb.co/b3jmR3k/hazelnut.jpg',
+    src: 'https://moskva.i-mne.com/img/p/moskva.i-mne.com/30-1701-large.jpg',
     consumable: true,
     effects: {
       changeNeeds: { hunger: -2 },
@@ -38,7 +38,7 @@ const items = {
   fullBottle: {
     name: 'Полная бутылка',
     id: 'fullBottle',
-    src: 'https://i.ibb.co/NV2zCNr/full-Bottle.jpg',
+    src: 'https://static.my-shop.ru/product/0/243/2427802_128.jpg',
     specific: true,
     consumable: true,
     effects: {
@@ -49,7 +49,7 @@ const items = {
   emptyBottle: {
     name: 'Пустая бутылка',
     id: 'emptyBottle',
-    src: 'https://i.ibb.co/pvKYzJR/empty-Bottle.jpg',
+    src: 'https://images.ua.prom.st/1387367707_w128_h128_butylka-plastikovaya-100ml.jpg',
     consumable: true,
     effects: {
       getItems: { fullBottle: 1 },
@@ -59,7 +59,7 @@ const items = {
   roach: {
     name: 'Плотва',
     id: 'roach',
-    src: 'http://www.fishinginireland.info/images/coarse/roach.jpg',
+    src: 'https://www.graycell.ru/picture/big/plotva.jpg',
     consumable: true,
     specific: true,
     effects: {
