@@ -1,0 +1,17 @@
+.button {
+    background-color: darkgray;
+    padding: 5px;
+    border-radius: 10px;
+    font-family: Courier, serif, sans-serif, monospace ;
+    font-weight: bold;
+}
+
+.button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: gray;
+}
+
+.button:active {
+    background-color: dimgrey;
+}

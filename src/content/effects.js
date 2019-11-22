@@ -44,7 +44,7 @@ const effects = {
       const itemIndex = playerStatus.inventory.indexOf(name);
 
       playerStatus.inventory.splice(itemIndex, 1);
-
+      inventoryCounter();
       document.getElementById(id).remove();
     });
   },
@@ -73,7 +73,7 @@ const effects = {
     resetStatus();
     killChildren(inventoryHolder);
     killChildren(skillsHolder);
-    renderScene('woodScene');
+    renderScene('gardenScene');
     changeStatusIndicators();
     effects.getItems({ randomItem: 1 });
     effects.getSkill('findRiver');

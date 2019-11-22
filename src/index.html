@@ -10,51 +10,53 @@
 <body>
 
 <div class="menu">
-    <span class="project-information hide">
+    <div class="menu__project-information-holder">
+    <span class="menu__project-information hide">
             Разработчик: <a href="https://github.com/ArtemidaOctavia/"> Artemida Octavia </a> <br>
             Тут потом что-то будет <br>
             /рандомный текст, чтобы заполнить пространство/ <br>
             /больше рандомного текста/ <br>
     </span>
-    <span class="backToMenu hide">
+    <span class="menu__back-button button hide">
         Назад
     </span>
-    <div class="menu-buttons">
-        <span class="menu-button new-game"> Новая игра</span>
-        <span class="menu-button about-project"> О проекте</span>
-        <span class="menu-button statistic"> Статистика</span>
+    </div>
+    <div class="menu__menu-buttons">
+        <span class="menu__new-game menu__menu-button button"> Новая игра</span>
+        <span class="menu__about-project menu__menu-button button"> О проекте</span>
+        <span class="menu__statistic menu__menu-button button hide"> Статистика</span>
     </div>
 </div>
 
 <div class="game-holder hide">
-    <div class="left-side-holder">
-        <div class="inventory-holder hide">
-        </div>
-        <div class="skills-holder hide">
-        </div>
-        <div class="description-holder">
-            <span class="description">
-            </span>
-        </div>
-        <div class="options-holder">
-            <ul class="options">
-            </ul>
+
+    <div class="game-holder__inventory-holder hide">
+    </div>
+    <div class="game-holder__skills-holder hide">
+    </div>
+    <div class="game-holder__description-holder">
+        <span class="game-holder__description-title"></span>
+        <span class="game-holder__description">
+        </span>
+    </div>
+    <div class="game-holder__illustration-holder">
+        <div class='game-holder__image'></div>
+    </div>
+
+    <div class="game-holder__options-holder">
+        <div class="game-holder__options">
         </div>
     </div>
 
-    <div class="right-side-holder">
-        <div class="illustration-holder">
-            <img class='image'>
-        </div>
-        <div class="status-holder">
-            <span class="option status-button inventory-button">Инвентарь</span>
-            <span class="option status-button skills-button">Навыки</span>
-            <span class="indicator"> Здоровье: <span class="damage"> здоров </span></span>
-            <span class="indicator"> Усталость: <span class = 'fatigue'> бодр </span></span>
-            <span class="indicator"> Голод: <span class="hunger"> сыт </span></span>
-            <span class="indicator"> Жажда: <span class="thirst"> напившись </span></span>
-        </div>
+    <div class="game-holder__status-holder">
+        <span class="game-holder__inventory-button button">Инвентарь</span>
+        <span class="game-holder__skills-button button">Навыки</span>
+        <span class="game-holder__indicator"> Здоровье: <span class="game-holder__damage"> здоров </span></span>
+        <span class="game-holder__indicator"> Усталость: <span class = 'game-holder__fatigue'> бодр </span></span>
+        <span class="game-holder__indicator"> Голод: <span class="game-holder__hunger"> сыт </span></span>
+        <span class="game-holder__indicator"> Жажда: <span class="game-holder__thirst"> напившись </span></span>
     </div>
+
 </div>
 
 </body>

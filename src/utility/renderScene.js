@@ -2,7 +2,7 @@ import { scenes } from '../content/scenes';
 import { renderOption } from './renderOption';
 import { renderPicture } from './renderPicture';
 import { killChildren } from './killChildren';
-import { description, options } from './domElements';
+import { description, options, descriptionTitle } from './domElements';
 
 const renderScene = (id) => {
   const scene = scenes[id];
@@ -12,6 +12,7 @@ const renderScene = (id) => {
   Object.keys(scene.actions).forEach((action) => {
     renderOption(scene.actions[action]);
   });
+  descriptionTitle.textContent = scene.title;
 };
 
 export { renderScene };
