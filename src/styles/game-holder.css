@@ -1,8 +1,7 @@
 .game-holder {
     display: flex;
     flex-wrap: wrap;
-    height: 600px;
-    width: 900px;
+    max-width: 900px;
     margin: 5px;
 }
 
