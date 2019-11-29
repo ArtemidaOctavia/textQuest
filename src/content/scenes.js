@@ -41,7 +41,7 @@ const scenes = {
         + 'выращивания овощей. На огороде могут также присутствовать посадки ягод и плодовых деревьев. Обычно '
         + 'огород огорожен забором или живой изгородью. На выбранном участке также допускается применение парников'
         + ' и теплиц. Возделывание огородов называется огородничеством.',
-    image: 'https://www.sssamara.ru/sites/default/files/ogorod_foto.jpg',
+    image: 'https://www.ogorod.ru/images/cache/400x400/crop/images%7Ccms-image-000029455.jpg',
     actions: {
       forward: {
         actionDescription: 'Идти вперёд',
